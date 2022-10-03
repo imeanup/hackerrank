@@ -5,6 +5,7 @@ def main():
     quicksort(A, len(A))
     print(A)
 
+    
 def quicksort(A, len):
     sort(A, 0, len - 1)
 
@@ -15,7 +16,7 @@ def sort(A, lo, hi):
         sort(A, lo, j-1)
         sort(A, j+1, hi)
 
-# Todo: Partition using the Java Algorithms
+        
 def partition(A,lo, hi):
     pivot = A[hi]
     i = lo
