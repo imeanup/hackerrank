@@ -41,7 +41,7 @@ for i in range(len(A)-1, -1, -1):
     C[A[i]] -= 1
 
 ''' The algorithm will still work correctly. The order that elements are taken out
-of C and ut into B doesn't affect the placement of the element with same key k. To make it stable,
+of C and put into B doesn't affect the placement of the element with same key k. To make it stable,
 we could place the elements of A into a collection of elements for each cell in arr C. Then, if we use 
 FIFO collection, the modification will be stable, if we use LILO, it will be anti-stable.
 
