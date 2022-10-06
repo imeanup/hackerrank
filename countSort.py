@@ -18,7 +18,7 @@ for j in range(0, len(A)):
     C[A[j]] += 1   
 print(f"C: {C}")
 
-''' This takes O(1) time and yeild the desire output
+''' 
 for i in range(1, k):
     C[i] -= C[i-1]
     '''
@@ -49,5 +49,9 @@ for i in range(0, len(A)):
     B[C[A[i]]-1] = A[i]
     C[A[i]] -= 1
  '''
+
+'''
+How many interger fall in range[a...b], compute C[b]- C[a-1]. This takes O(1) time and yeild the desire output.
+'''
 
 print(f"B:  {B}")
