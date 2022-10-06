@@ -18,6 +18,11 @@ for j in range(0, len(A)):
     C[A[j]] += 1   
 print(f"C: {C}")
 
+''' This takes O(1) time and yeild the desire output
+for i in range(1, k):
+    C[i] -= C[i-1]
+    '''
+
 # for i = 1 to k:
 #   C[i] += C[i-1]
 # C[i] now contains the number of elements less than or equal to i.
