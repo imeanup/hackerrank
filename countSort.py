@@ -3,7 +3,7 @@
 # 
 
 A = [7,1,3,1,2,4,5,7,2,4,3]
-k = max([x for x in A])
+k = 1 + max([x for x in A])
 
 # let C(0...k) be a new array
 # for i = 0 to k
@@ -15,7 +15,7 @@ C = [0]*k
 # C[i] now contains the number of elements equal to i.
 
 for j in range(0, len(A)):
-    C[A[j]-1] += 1   
+    C[A[j]] += 1   
 print(f"C: {C}")
 
 # for i = 1 to k:
@@ -32,7 +32,7 @@ print(f"B:  {B}")
 #   B[C[A[j]]] = A[j]
 #   C[A[j]] -= 1
 for i in range(len(A)-1, -1, -1):
-    B[C[A[i]-1]-1] = A[i]
-    C[A[i]-1] -= 1
+    B[C[A[i]]-1] = A[i]
+    C[A[i]] -= 1
 
 print(f"B:  {B}")
