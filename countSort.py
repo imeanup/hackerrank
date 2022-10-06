@@ -35,4 +35,14 @@ for i in range(len(A)-1, -1, -1):
     B[C[A[i]]-1] = A[i]
     C[A[i]] -= 1
 
+''' The algorithm will still work correctly. The order that elements are taken out
+of C and ut into B doesn't affect the placement of the element with same key k. To make it stable,
+we could place the elements of A into a collection of elements for each cell in arr C. Then, if we use 
+FIFO collection, the modification will be stable, if we use LILO, it will be anti-stable.
+
+for i in range(0, len(A)):
+    B[C[A[i]]-1] = A[i]
+    C[A[i]] -= 1
+ '''
+
 print(f"B:  {B}")
