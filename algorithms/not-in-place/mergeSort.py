@@ -12,11 +12,11 @@ def merge_sort(A, a = 0, b = None):     # Sort sub-array A[a:b]
         while a < b:                    # O(n)
             if (j >= len(R)) or (i < len(L) and L[i] < R[j]):   # O(1) check side
                 A[a] = L[i]                                     # O(1) merge from left
-                i = i + 1                                       # O(1) decrement left pointer
+                i += 1                                       # O(1) decrement left pointer
             else:
                 A[a] = R[j]                                     # O(1) merge from right
-                j = j + 1                                       # O(1) decrement right pointer
-                a = a + 1                                       # O(1) decrement merge pointer
+                j += 1                                       # O(1) decrement right pointer
+            a += 1                                       # O(1) decrement merge pointer
 
 
 if __name__ == "__main__":
