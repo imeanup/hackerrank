@@ -1,10 +1,10 @@
-def main():
-    # A = [2, 8, 7, 1, 3, 5, 6, 4]
-    A = [3, 6, 7, 5, 1, 2, 4]
-    print(A)
-    quicksort(A, len(A))
-    print(A)
+from random import shuffle
 
+def main():
+    A = [i for i in range(1, 101)]
+    shuffle(A)
+    quicksort(A)
+    print(A)
     
 def quicksort(A, len):
     sort(A, 0, len - 1)
