@@ -1,6 +1,6 @@
 from random import shuffle
 
-''' Insertion sort can require Ω(n^2) comparisons and Ω(n2) swaps in the worst case. '''
+''' Insertion sort can require Ω(n^2) comparisons and Ω(n^2) swaps in the worst case. '''
 
 def insertion_sort(A):                    # Insertion sort array A
     for i in range(1, len(A)):            # O(n) loop over array
