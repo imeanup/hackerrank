@@ -43,27 +43,65 @@ class Hash_Table_Set:
             self.A = A
             self._compute_bounds()
 
-    def find(self, k):
-        ...
 
-    def insert(self, x):
-        ...
+    def find(self, k):              # O(1)e
+        h = self._hash(k, len(self.A))
+        return self.A[h].find(k)
 
-    def delete(self, k):
-        ...
 
-    def find_min(self):
-        ...
+    def insert(self, x):            # O(1)ae
+        self._resize(self.size + 1)
+        h = self._hash(x.key, len(self.A))
+        added = self.A[h].insert(x)
+        if added:
+            self.size += 1
+        return added
 
-    def find_max(self):
-        ...
 
-    def find_next(self,k):
-        ...
+    def delete(self, k):            # O(1)ae
+        assert len(self) > 0
+        h = self._hash(k, len(self.A))
+        x = self.A[h].delete(k)
+        self.size -= 1
+        self._resize(self.size)
+        return x
 
-    def find_prev(self, k):
-        ...
+    def find_min(self):             # O(n)
+        out = None
+        for x in self:
+            if (out is None) or (x.key < out.key):
+                out = x
+        return out
 
-    def iter_order(self):
-        ...
     
+    def find_max(self):             # O(n)
+        out = None
+        for x in self:
+            if (out is None) or (x.key > out.key):
+                out = x
+        return out
+
+    
+    def find_next(self,k):          # O(n)
+        out = None
+        for x in self:
+            if x.key > k:
+                if (out is None) or (x.key < out.key):
+                    out = x
+        return out
+
+    
+    def find_prev(self, k):         # O(n)
+        out = None
+        for x in self:
+            if x.key < k:
+                if (out is None) or (x.key > out.key):
+                    out = x
+        return out
+
+    
+    def iter_order(self):           # O(n^2)
+        x = self.find_min()
+        while x:
+            yield x
+            x = self.find_next(x.key)
