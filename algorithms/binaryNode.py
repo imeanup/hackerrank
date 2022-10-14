@@ -69,3 +69,21 @@ class Binary_Node:
 
         return A
     
+    
+    '''
+    def subtree_insert_before(A, B):        # O(h)
+        if A.left:
+            A = A.left.subtree_last()
+            A.right, B.parent = B, A
+        else:
+            A.left,  B.parent = B, A
+        # A.maintain()
+
+    def subtree_insert_after(A, B):         # O(h)
+        if A.right:
+            A = A.right.subtree_first()
+            A.left,  B.parent = B, A
+        else:
+            A.right, B.parent = B, A
+        # A.maintain()
+    '''
