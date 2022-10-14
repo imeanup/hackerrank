@@ -51,16 +51,28 @@ class Linked_List_Seq:
     return x
     
   def insert_at(self, i, x):
-    ifi==0:
-      self.insert_first(x)
-      return
+    if i == 0:
+      return self.insert_first(x)
+    
+    new_node = Linked_List_Node(x)
+    
+    node = self.head.later_node(i - 1)
+    
+    new_node.next = node.next
+    node.next = new_node
+    self.size += 1
     
   def delete_at(self, i):
-    ...
+    if i == 0:
+      return self.delete_first()
+    node = self.head.later_node(i - 1)
+    x = node.next.item
+    node.next = node.next.next
+    self.size -= 1
+    return x    
     
   def insert_last(self, x):
-    ...
+    self.insert_at(len(self), x)
     
   def delete_last(self):
-    ...
-  
+    return self.delete_at(len(self) - 1)
