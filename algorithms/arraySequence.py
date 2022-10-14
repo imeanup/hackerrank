@@ -25,23 +25,36 @@ class Array_Seq:
     self.A[i] = x
     
     
-  def _copy_forward(self, i, n, A, j):
-    ...
+  def _copy_forward(self, i, n, A, j):    # O(n)
+    for k in range(n):
+      A[j + k] = self.A[i + k]
     
   
-  def _copy_backward(self, i, n, A, j):
-    ...
+  def _copy_backward(self, i, n, A, j):   # O(n)
+    for k in range(n-1, -1, -1):
+      A[j + k] = self.A[i + k]
     
     
-  def insert_at(self, i, x):
-    ...
+  def insert_at(self, i, x):      # O(n)
+    n = len(self) 
+    A = [None] * (n + 1) 
+    self._copy_forward(0, i, A, 0) 
+    A[i] = x
+    self._copy_forward(i, n - i, A, i + 1)
+    self.build(A)
     
     
-  def delete_at(self, i):
-    ...
+  def delete_at(self, i):         # O(n)
+    n = len(self)
+    A = [None] * (n - 1)
+    self._copy_forward(0, i, A, 0) 
+    x = self.A[i]
+    self._copy_forward(i + 1, n - i - 1, A, i)
+    self.build(A)
+    return x
     
   
-  def insert_first(self, x):
+  def insert_first(self, x):      # O(n)
     self.insert_at(0, x)
     
     
