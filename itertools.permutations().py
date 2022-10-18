@@ -1,4 +1,5 @@
 # Enter your code here. Read input from STDIN. Print output to STDOUT
+# https://docs.python.org/3/library/itertools.html#itertools.permutations
 from itertools import permutations
 
 s, k = input().split()
