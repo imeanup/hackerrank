@@ -1,6 +1,4 @@
-def tree_traversal(
-    root,
-):  # Time: O(n); Space: O(h); h-> height; min(h) = log n; max(h) = n
+def tree_traversal(root):  # Time: O(n); Space: O(h); h-> height; min(h) = log n; max(h) = n
     if root:
         # Pre-order: Processes the root before the traversals of left and right childer.
         print("Preorder: %d" % root.data)
