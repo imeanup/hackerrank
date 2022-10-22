@@ -11,3 +11,4 @@ def has_path_sum(tree, remaining_weight):  # Time: O(n);Space: O(h)
     return has_path_sum(tree.left, remaining_weight - tree.data) or has_path_sum(
         tree.right, remaining_weight - tree.data
     )
+
