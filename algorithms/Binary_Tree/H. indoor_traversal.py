@@ -18,3 +18,4 @@ def inoder_traversal(tree):  # Time: O(n); space: O(h)
             tree = tree.right
 
     return result
+
