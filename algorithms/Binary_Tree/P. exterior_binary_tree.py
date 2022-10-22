@@ -36,3 +36,4 @@ def exterior_binary_tree(tree):
         if tree
         else []
     )
+
