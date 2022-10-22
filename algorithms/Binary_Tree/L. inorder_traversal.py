@@ -26,3 +26,4 @@ def inorder_traversal(tree):  # Time: O(n) Space: O(1)
 
         prev, tree = tree, next
     return result
+
