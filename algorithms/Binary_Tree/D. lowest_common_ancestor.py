@@ -31,3 +31,4 @@ def lca(tree, node0, noe1):  # Time: O(n); Space: O(h)
         return Status(num_target_nodes, tree if num_target_nodes == 2 else None)
 
     return lca_helper(tree, node0, node1).ancestor
+
