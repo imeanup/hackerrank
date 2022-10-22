@@ -19,5 +19,3 @@ class BinaryTreeNode:
       
       # Post-order: Processes the root after the traversals of left and right chiLd.
       print("Postorder: %d" %root.data)
-     
-  
