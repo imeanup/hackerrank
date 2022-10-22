@@ -15,3 +15,4 @@ def is_symmetric(tree):  # Time: O(n); Space: O(h)
         return False
 
     return not tree or check_symmetric(tree.left, tree.right)
+
