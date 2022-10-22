@@ -26,3 +26,4 @@ def is_balanced_binary_tree(tree):  # Time: O(n); Space: O(h)
         return BalancedStatusWithHeight(id_balanced, height)
 
     return check_balanced(tree).balanced
+
