@@ -11,3 +11,4 @@ def preoder_traversal(tree):  # Time: O(n); space: O(h)
             path += [curr.right, curr.left]
 
     return result
+
