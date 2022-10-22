@@ -23,3 +23,4 @@ def lca(node_0, node_1):  # Time: O(n); Space: O(h)
     while node_0 is not node_1:
         node_0, node_1 = node_0.parent, node_1.parent
     return node_0
+
