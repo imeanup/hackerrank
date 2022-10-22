@@ -12,3 +12,4 @@ def sum_root_to_leaf(tree, partial_path_sum=0):  # Space: O(h);Time: O(n)
     return sum_root_to_leaf(tree.left, partial_path_sum) + sum_root_to_leaf(
         tree.right, partial_path_sum
     )
+
