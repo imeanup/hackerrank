@@ -13,3 +13,4 @@ def construct_right_sibling(tree):  # Time: O(n), Space: O(1)
         while tree and tree.left:
             populate_children_next_field(tree)
             tree = tree.left
+
