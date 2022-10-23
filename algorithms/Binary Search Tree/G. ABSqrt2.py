@@ -1,6 +1,3 @@
-import math, bintrees
-
-
 from cgitb import reset
 import math, bintrees
 
@@ -16,7 +13,7 @@ class ABSqrt2:
     def __eq__(self, other):
         return self.val == other.val
 
-    def generate_first_k_a_b_sqrt2(k):
+    def generate_first_k_a_b_sqrt2(k):  # Time: O(k lg k); Space: O(k)
         # Initial for 0 + 0 * sqrt(2).
         candidates = bintrees.RBTree([(ABSqrt2(0, 0), None)])
 
@@ -29,7 +26,7 @@ class ABSqrt2:
             candidates[ABSqrt2(next_smallest.a, next_smallest.b + 1)] = None
         return result
 
-    def generate_first_k_a_b_sqrt2(k):
+    def generate_first_k_a_b_sqrt2(k):  # Time: O(n)
         # will store the first k numbers of the form a + b sqrt(2)
         cand = [ABSqrt2(0, 0)]
         i = j = 0
