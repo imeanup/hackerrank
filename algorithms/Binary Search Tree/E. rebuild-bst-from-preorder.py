@@ -4,6 +4,22 @@ from bintrees import BSTNode
 
 
 def rebuild_bst_from_preorder(preorder_sequence):
+    if not preorder_sequence:
+        return None
+
+    transition_point = next(
+        (i for i, a in enumerate(preorder_sequence) if a > preorder_sequence[0]),
+        len(preorder_sequence),
+    )
+
+    return BSTNode(
+        preorder_sequence[0],
+        rebuild_bst_from_preorder(preorder_sequence[1:transition_point]),
+        rebuild_bst_from_preorder(preorder_sequence[transition_point:]),
+    )
+
+
+def rebuild_bst_from_preorder(preorder_sequence):
     def rebuild_bst_from_preorder_on_value_range(lower_bound, upper_bound):
         if root_idx[0] == len(preorder_sequence):
             return None
@@ -20,3 +36,4 @@ def rebuild_bst_from_preorder(preorder_sequence):
     # Tracks current subtree.
     root_idx = [0]
     return rebuild_bst_from_preorder_on_value_range(float("-inf"), float("inf"))
+
