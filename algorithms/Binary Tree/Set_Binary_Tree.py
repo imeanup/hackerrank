@@ -3,10 +3,10 @@ from Binary_Tree import Binary_Node, Binary_Tree
 
 class BST_Node(Binary_Node):
     def subtree_find(A, k):  # O(h)
-        if k < A.item.key:
+        if k < A.item:
             if A.left:
                 return A.left.subtree_find(k)
-        elif k > A.item.key:
+        elif k > A.item:
             if A.right:
                 return A.right.subtree_find(k)
         else:
@@ -14,7 +14,7 @@ class BST_Node(Binary_Node):
         return None
 
     def subtree_find_next(A, k):  # O(h)
-        if A.item.key <= k:
+        if A.item <= k:
             if A.right:
                 return A.right.subtree_find_next(k)
             else:
@@ -26,7 +26,7 @@ class BST_Node(Binary_Node):
         return A
 
     def subtree_find_prev(A, k):  # O(h)
-        if A.item.key >= k:
+        if A.item >= k:
             if A.left:
                 return A.left.subtree_find_prev(k)
             else:
@@ -38,12 +38,12 @@ class BST_Node(Binary_Node):
         return A
 
     def subtree_insert(A, B):  # O(h)
-        if B.item.key < A.item.key:
+        if B.item < A.item:
             if A.left:
                 A.left.subtree_insert(B)
             else:
                 A.subtree_insert_before(B)
-        elif B.item.key > A.item.key:
+        elif B.item > A.item:
             if A.right:
                 A.right.subtree_insert(B)
             else:
@@ -109,3 +109,31 @@ class Binary_Tree_Set(Binary_Tree):
             self.root = None
         self.size -= 1
         return ext.item
+
+
+if __name__ == "__main__":
+    T = Binary_Tree_Set()
+    T.build([10, 6, 8, 5, 1, 3])
+    print(f"\n* Tree *\n\n {T}")
+
+    T.insert(2)
+    T.insert(4)
+    T.insert(12)
+    T.insert(29)
+
+    print(f"\n* Tree after insertion *\n\n {T}")
+
+    T.delete(10)
+    print(f"\n* Tree after deletion *\n\n {T}")
+
+    max = T.find_max()
+    min = T.find_min()
+    print(f"max: {max} min: {min}")
+
+    find_prev = T.find_prev(10)
+    find_next = T.find_next(10)
+
+    print(f"Find Prev: {find_prev}, Find next: {find_next}")
+
+    # find = T.find(int(input("\nFind Value:   ")))
+    # print(f"\nFind present? {find}\n")

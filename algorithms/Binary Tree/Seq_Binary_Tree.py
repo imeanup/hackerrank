@@ -85,3 +85,25 @@ class Binary_Tree_Seq(Binary_Tree):
 
     def delete_last(self):
         return self.delete_at(len(self) - 1)
+
+
+if  __name__ == "__main__":
+    T = Binary_Tree_Seq()
+    T.build([10, 6, 8, 5, 1, 3])
+    print(f"\n* Tree *\n\n {T}")
+
+    print(T.get_at(4))
+    T.set_at(4, -4)
+
+    print(f"\n* Tree get at (4) *\n\n {T}")
+
+    T.insert_at(4, 18)
+    print(f"\n* Tree insert at (4, 18) *\n\n {T}")
+
+    T.insert_at(4, 12)
+    print(f"\n* Tree insert at (4, 12) *\n\n {T}")
+
+    T.delete_at(2)
+    print(f"\n* Tree-datele at(2) *\n\n {T}")
+    T.delete_first()
+    print(f"\n* Tree-after delete first *\n\n {T}")
