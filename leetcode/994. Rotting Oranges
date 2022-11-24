@@ -1,0 +1,41 @@
+class Solution:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        
+        from collections import deque
+        
+        rows = len(grid)
+        colums = len(grid[0])
+        
+        count = 0
+        
+        rotten = deque()
+        
+        for i in range(rows):
+            for j in range(colums):
+                if grid[i][j] == 2:
+                    rotten.append((i, j))
+                elif grid[i][j] == 1:
+                    count += 1
+                    
+                    
+        min_minute = 0
+        
+        while rotten and count > 0:
+            min_minute += 1
+            
+            for _ in range(len(rotten)):
+                x, y = rotten.popleft()
+                
+                for nx, ny in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+                    i = nx + x
+                    j = ny + y
+                    
+                    if i < 0 or i == rows or j < 0 or j == colums or grid[i][j] == 0 or grid[i][j] == 2:
+                        continue
+
+                    count -= 1
+                    grid[i][j] = 2
+                    rotten.append((i, j))
+
+                
+        return min_minute if count == 0 else -1
