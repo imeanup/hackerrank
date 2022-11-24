@@ -1,0 +1,32 @@
+class Solution:
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        
+        m = len(grid)
+        n = len(grid[0])
+        
+        def dfs(i, j):
+    
+            if i < 0 or j < 0 or i == m or j == n or grid[i][j] == 0:
+                return 0
+
+            ans = 1
+            grid[i][j] = 0
+            
+            ans += dfs(i, j + 1)  # East
+            ans += dfs(i, j - 1)  # West
+            ans += dfs(i + 1, j)  # North
+            ans += dfs(i - 1, j)  # South    
+
+            return ans
+        
+        count = 0
+        
+        for i in range(m):
+            for j in range(n):
+                count = max(count, dfs( i, j))
+                    
+        return count
+    
+
+        
+                
