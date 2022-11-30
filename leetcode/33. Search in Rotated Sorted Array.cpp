@@ -9,7 +9,6 @@ int search(vector<int>& nums, int target)
         return it != nums.end() && *it == target ? it-nums.begin() : -1;
 }
 
-'''
 /*
 Explanation
 
@@ -43,7 +42,9 @@ What I mean by left side and right side refers to left side or right side of the
 Hope this will help.
 */
 
-/*If nums[mid] and target are "on the same side" of nums[0], we just take nums[mid]. Otherwise we use -infinity or +infinity as needed.*/
+/*
+If nums[mid] and target are "on the same side" of nums[0], we just take nums[mid]. Otherwise we use -infinity or +infinity as needed.
+*/
 
 int search(vector<int>& nums, int target) {
     int lo = 0, hi = nums.size();
