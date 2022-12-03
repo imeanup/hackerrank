@@ -71,3 +71,17 @@ yeild the desire output.
 '''
 
 print(f"B:  {B}")
+
+
+'''
+def counting(A):
+    u = 1 + max([x for x in A])
+    D = [[] for _ in range(u)]
+    for x in A:
+        D[x].append(x)
+    i = 0
+    for chain in D: 
+        for x in chain:
+            A[i] = x
+            i += 1
+'''
