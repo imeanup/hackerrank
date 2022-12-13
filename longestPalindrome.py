@@ -20,6 +20,6 @@ def manacherAlg(s:str) -> str:
 
     return s[(cenIdx - maxLen)//2:(cenIdx + maxLen)//2]
 
-s = "babad"
+s = "cbbd"
 val = manacherAlg(s)
 print(val)
