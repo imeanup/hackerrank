@@ -1,3 +1,8 @@
+'''
+https://en.wikipedia.org/wiki/Longest_palindromic_substring#Manacher's_algorithm
+Java Implementation: https://en.wikipedia.org/wiki/Longest_palindromic_substring
+'''
+
 def manacherAlg(s:str) -> str:
     T = '#'.join('^{}$'.format(s))
     n = len(T)
