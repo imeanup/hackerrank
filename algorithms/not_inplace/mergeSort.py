@@ -3,6 +3,10 @@ import random
 def merge_sort(A, a = 0, b = None):     # Sort sub-array A[a:b]
     if b is None:                       # O(1) initialize
         b = len(A)                      # O(1)
+
+    '''
+    'if 1 < b - a' slows down the process. Start from c = (a+b)//2 
+    '''
     if 1 < b - a:                       # O(1) size k = b - a
         c = (a + b + 1) // 2            # O(1) compute center
         merge_sort(A, a, c)             # T(k/2) recursively sort left
