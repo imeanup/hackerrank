@@ -112,7 +112,7 @@ if __name__ == "__main__":
     A = [x for x in range(1, 51)]
     # A = [12, 11, 11, 11, 12, 13, 12, 13, 5, 6, 6, 6, 7] 
     # Testing the equal keys, not placed in the same A.parent.left or A.parent.right 
-    # in any subtree. Use the BUILD MAX HEAP (line 37, 38) to test the output.
+    # in any subtree. Use the BUILD MAX HEAP (line 37*, 38*) to test the output.
     N = len(A)
     shuffle(A)
     print("\nUnsorted Array\n",A,"\n")
