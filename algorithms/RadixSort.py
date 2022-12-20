@@ -40,7 +40,11 @@ def RADIX_SORT(A, d):
     for i = 1 to d
         use a stable sort to sort array A on digit i
     """
-
+    MIN = min(A)
+    MIN = -MIN if MIN < 0 else 0
+    for i in range(len(A)):
+        A[i] += MIN
+    
     MAX = max(A)
 
     """
@@ -50,6 +54,9 @@ def RADIX_SORT(A, d):
     while MAX / d > 1:
         COUNTING_SORT(A, d)
         d *= 10
+
+    for i in range(len(A)):
+        A[i] -= MIN
 
 
 if __name__ == "__main__":
