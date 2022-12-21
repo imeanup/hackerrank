@@ -1,13 +1,14 @@
 def SQUARE_MATRIX_MULTIPLY(A, B):
-    m = len(A)
-    n = len(B[0])
-    C = [[0 for i in range(n)] for j in range(m)]
-    for i in range(m):
+    n = len(A)
+    C = EMPTY_MATRIX(n)
+    for i in range(n):
         for j in range(n):
-            for k in range(m):
+            C[i][j] = 0
+            for k in range(n):
                 C[i][j] += A[i][k] * B[k][j]
     return C
 
+<<<<<<< HEAD
 
 '''
 SQUARE-MATRIX-MULTIPLY-RECURSIVE (A, B)
@@ -27,6 +28,8 @@ SQUARE-MATRIX-MULTIPLY-RECURSIVE (A, B)
 	    return C
 '''
 # Ref: https://github.com/Alzemand/recursive-matrix-multiplication/blob/master/square_matrix_multiply.py
+=======
+>>>>>>> b317756 (TODO fix the bug in Matrix Multiply recursively)
 # TODO: Fix the bug in the code Not working
 def SQUARE_MATRIX_MULTIPLY_RECURSIVE(A, B):
     n = len(A)
