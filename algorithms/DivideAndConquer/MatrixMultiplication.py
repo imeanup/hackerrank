@@ -8,6 +8,25 @@ def SQUARE_MATRIX_MULTIPLY(A, B):
                 C[i][j] += A[i][k] * B[k][j]
     return C
 
+
+'''
+SQUARE-MATRIX-MULTIPLY-RECURSIVE (A, B)
+	n = A.rows
+	let C be a new n x n matrix
+	if n == 1
+		c11 = a11 x b1
+	else partition A, B, and C as in equations (4.9)
+		C11 = SQUARE-MATRIX-MULTIPLY-RECURSIVE(A11, B11)
+		    + SQUARE-MATRIX-MULTIPLY-RECURSIVE(A12, B21)       
+		C12 = SQUARE-MATRIX-MULTIPLY-RECURSIVE(A11, B12)
+	        + SQUARE-MATRIX-MULTIPLY-RECURSIVE(A12, B22)        
+		C21 = SQUARE-MATRIX-MULTIPLY-RECURSIVE(A21, B11)
+	        + SQUARE-MATRIX-MULTIPLY-RECURSIVE(A22, B21)        
+		C22 = SQUARE-MATRIX-MULTIPLY-RECURSIVE(A21, B12)
+	        + SQUARE-MATRIX-MULTIPLY-RECURSIVE(A22, B22)
+	    return C
+'''
+
 def SQUARE_MATRIX_MULTIPLY_RECURSIVE(A, B):
     # m = len(A)
     # n = len(B[0])
