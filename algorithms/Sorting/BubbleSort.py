@@ -26,7 +26,7 @@ def _BUBBLESORT(A):
 
 
 if __name__=="__main__":
-    A = [x for x in range(-51, 51)]
+    A = [x for x in range(0, 11)]
     shuffle(A)
     print(f"\nArray\n\n{A}")
     _BUBBLESORT(A)
