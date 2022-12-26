@@ -1,4 +1,4 @@
-from in_place.insertionSort import insertion_sort
+from Sorting.insertionSort import insertion_sort
 
 
 def BUCKET_SORT(A):
