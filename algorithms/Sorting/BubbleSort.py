@@ -18,9 +18,9 @@ def BUBBLESORT(A):
                 A[j], A[j-1] = A[j-1], A[j]
     
 def _BUBBLESORT(A):
-    l = len(A)
-    for i in range(l):
-        for j in range(0, l-i-1):
+    n = len(A)
+    for i in range(n):
+        for j in range(0, n-i-1):
             if A[j] > A[j+1]:
                 A[j], A[j+1] = A[j+1], A[j]
 
