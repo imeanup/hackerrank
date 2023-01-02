@@ -1,5 +1,5 @@
 '''
-To find the median of two sorted arrays, you can use the following algorithm:
+To find the median of two sorted arrays in O(lg(n+m)) time, use the following algorithm:
 
 Combine the two arrays into a single sorted array.
 If the length of the combined array is odd, return the element at index n // 2, where n is the length of the combined array.
@@ -26,7 +26,9 @@ def median(arr1, arr2):
     else:
         return combined[(n + m) // 2]
 
-      
+'''
+O(lg(min(n,m))) time
+'''
 def findMedianSortedArrays(self, arr1: List[int], arr2: List[int]) -> float:
     n = len(arr1)
     m = len(arr2)
