@@ -48,7 +48,21 @@ def findMedianSortedArrays(self, arr1: List[int], arr2: List[int]) -> float:
         else:
             return (max(L1, L2) + min(R1, R2)) / 2
     return float('nan')
-  
+
+
+'''
+To do this in O(lg(min(n,m))) time, the following algorithm is useful:
+
+Set L to the index of the first element in the first array, and R to the index of the last element in the first array.
+While L <= R, do the following:
+Set i to the floor of (L + R) / 2.
+Set j to the floor of (n + m + 1) / 2 - i.
+If i is too small (i.e., j > 0 and arr1[i - 1] > arr2[j]), set L to i + 1.
+If i is too large (i.e., j < m and arr1[i] < arr2[j - 1]), set R to i - 1.
+Otherwise, i is the correct value, so continue to the next step.
+If n is odd, return max(arr1[i - 1], arr2[j]).
+If n is even, return the average of max(arr1[i - 1], arr2[j]) and min(arr1[i], arr2[j - 1]).
+'''
 def median(arr1, arr2):
     n = len(arr1)
     m = len(arr2)
