@@ -54,6 +54,31 @@ class DisjointSet:
     '''
     def height(self, x):
         return self.rank[self.find(x)]
+    '''
+    iterate through the elements of the set and for each element find its representative element (root) and 
+    increment the size of the set that the element belongs to. Finally, you can return the maximum size of the set.
+    '''
+    def width(self):
+        width = 0
+        set_size = [0] * len(self.parent)
+        for i in range(len(self.parent)):
+            set_size[self.find(i)] += 1
+        width = max(set_size)
+        return width
+      
+    def width(self):
+        width = 0
+        set_size = {}
+        for i in range(len(self.parent)):
+            rep = self.find(i)
+            if rep in set_size:
+                set_size[rep] += 1
+            else:
+                set_size[rep] = 1
+        width = max(set_size.values())
+        return width
+
+
 
 
 '''
