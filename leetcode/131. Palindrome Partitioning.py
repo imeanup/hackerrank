@@ -1,4 +1,5 @@
 # https://leetcode.com/problems/palindrome-partitioning/description/
+# https://youtu.be/wvaYrOp94k0
 
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
