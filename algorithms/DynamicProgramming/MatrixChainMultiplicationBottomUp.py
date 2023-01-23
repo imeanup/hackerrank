@@ -37,6 +37,7 @@ def PRINT_OPTIMAL_PARENTS(s, i, j):
 
 
 p = [30, 35, 15, 5, 10, 20, 25]
+# p = [5, 10, 3, 12, 5, 50, 6]
 m, s = MATRIX_CHAIN_ORDER(p)
 print(m)
 print(s)
