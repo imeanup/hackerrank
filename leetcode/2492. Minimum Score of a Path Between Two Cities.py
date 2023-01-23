@@ -31,3 +31,30 @@ class DisjointSet:
             self.parent[px] = py
             if self.rank[px] == self.rank[py]:
                 self.rank[py] += 1
+
+                
+class Solution:
+    def minScore(self, n: int, roads: List[List[int]]) -> int:
+        from collections import defaultdict, deque
+        
+        graph = defaultdict(dict)
+        
+        for u, v, w in roads:
+            graph[u][v] = graph[v][u] = w
+            
+        # print(graph)
+        
+        res = float('inf')
+        visited = set()
+        dq = deque([1])
+        
+        while dq:
+            node = dq.popleft()
+            
+            for adj, src in graph[node].items():
+                if adj not in visited:
+                    dq.append(adj)
+                    visited.add(adj)
+                res = min(res, src)
+        return res
+                
