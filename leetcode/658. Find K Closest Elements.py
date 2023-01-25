@@ -1,4 +1,4 @@
-https://leetcode.com/problems/find-k-closest-elements/description/
+# https://leetcode.com/problems/find-k-closest-elements/description/
 
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
@@ -44,3 +44,14 @@ class Solution:
             k -= 1
         return arr[L+1:R]
             
+        
+class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        L = 0
+        R = len(arr) - 1
+        while R - L >= k:
+            if x - arr[L] <= arr[R] - x:
+                R -= 1
+            else:
+                L += 1
+        return arr[L:R+1]
