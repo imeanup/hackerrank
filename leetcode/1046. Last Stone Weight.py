@@ -14,3 +14,17 @@ class Solution:
             else: 
                 continue
         return -heappop(stones) if stones else 0
+
+    
+class Solution:
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        
+        while len(stones) > 1:
+            stones.sort(reverse=True)
+            y = stones.pop(0)
+            x = stones.pop(0)
+            if x != y:
+                stones.append(y - x)
+            else: 
+                continue
+        return stones[0] if stones else 0
