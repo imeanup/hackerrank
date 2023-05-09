@@ -1,6 +1,6 @@
 // main.cpp
 #include <iostream>
-#include "BST.h"
+#include "bst.h"
 using namespace std;
 
 int main() {
