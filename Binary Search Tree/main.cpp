@@ -25,6 +25,9 @@ int main() {
     cout << "Level Order: ";
     tree.levelOrder();
     cout << "\n";
+    
+    cout << "Minimum key: " << tree.findMin() << "\n";
+    cout << "Maximum key: " << tree.findMax() << "\n";
         
     return 0;
 }
