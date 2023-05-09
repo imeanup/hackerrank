@@ -1,7 +1,7 @@
 #include "bst.h"
 #include <queue>
 
-void BST :: levelOrder(Node *root){
+void BST :: levelorder(Node *root){
     if (!root){
         return;
     }
@@ -28,6 +28,6 @@ void BST :: levelOrder(Node *root){
     }
 }
 
-void BST :: levelOrder(){
-    levelOrder(root);
+void BST :: levelorder(){
+    levelorder(root);
 }
