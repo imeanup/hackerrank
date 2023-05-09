@@ -21,7 +21,7 @@ class BST {
         void inorder(Node *root);
         void preorder(Node *root);
         void postorder(Node *root);
-        void levelOrder(Node *root);
+        void levelorder(Node *root);
     public:
         BST();
         void search(int key);
@@ -30,7 +30,7 @@ class BST {
         void inorder();
         void preorder();
         void postorder();
-        void levelOrder();
+        void levelorder();
         int findMin();
         int findMax();
 };
