@@ -1,4 +1,4 @@
-#include "BST.h"
+#include "bst.h"
 
 Node *noChild(Node *root, Node *par, Node *ptr);
 Node *oneChild(Node *root, Node *par, Node *ptr);
