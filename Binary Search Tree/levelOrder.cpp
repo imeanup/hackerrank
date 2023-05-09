@@ -1,4 +1,4 @@
-#include "BST.h"
+#include "bst.h"
 #include <queue>
 
 void BST :: levelOrder(Node *root){
