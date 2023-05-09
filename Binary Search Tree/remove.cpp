@@ -9,7 +9,7 @@ Node *BST :: remove(Node *root, int key){
     ptr = root;
     par = nullptr;
     while (ptr){
-        if (key == par->value){
+        if (key == ptr->value){
             break;
         }
         par = ptr;
