@@ -21,12 +21,11 @@ int main() {
     cout << "Inorder Traversal: ";
     tree.inorder();
     cout << "\n";
-
-    /*
+    
     cout << "Level Order: ";
     tree.levelOrder();
-    */
-    
+    cout << "\n";
+        
     return 0;
 }
 // This command need to be updated
