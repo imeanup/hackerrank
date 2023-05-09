@@ -31,6 +31,8 @@ class BST {
         void preorder();
         void postorder();
         void levelOrder();
+        int findMin();
+        int findMax();
 };
 
 #endif
