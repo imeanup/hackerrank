@@ -20,7 +20,7 @@ class TBT{
         void inorder(Node *root);
         void preorder(Node * root);
         Node *successor(Node *root);
-        void predecessor(Node *root);
+        Node *predecessor(Node *root);
     public:
         TBT();
         void insert(int key);
