@@ -6,9 +6,12 @@ Node *TBT :: predecessor (Node *root){
     if (root->leftThread){
         return root->left;
     }
-    else{
+    else {
         root = root->left;
-        
+        while (!root->rightThread){
+            root = root->right;
+        }
+        return root;
     }
 }
 
