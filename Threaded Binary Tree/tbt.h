@@ -1,6 +1,6 @@
-// avl.h
-#ifndef AVL_H
-#define AVL_H
+// tbt.h
+#ifndef TBT_H
+#define TBT_H
 
 #include <iostream>
 using namespace std;
