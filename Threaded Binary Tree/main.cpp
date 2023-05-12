@@ -39,3 +39,13 @@ int main(){
     
     return 0;
 }
+
+/*
+g++ main.cpp tbt.cpp insert.cpp remove.cpp inorder.cpp preorder.cpp successor.cpp predecessor.cpp -o myprogram
+./myprogram
+
+Inorder: 5 10 13 14 16 17 20 22 30 
+Preorder: 5 10 14 13 16 17 20 30 22 
+Inorder: 5 10 13 16 17 20 22 30 
+Inorder: 5 10 13 16 17 22 30 
+*/
