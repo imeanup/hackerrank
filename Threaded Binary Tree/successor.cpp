@@ -13,7 +13,3 @@ Node *TBT :: successor(Node *root){
         return root;
     }
 }
-
-void TBT :: successor(){
-    root = successor(root);
-}
