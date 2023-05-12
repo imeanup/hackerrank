@@ -14,7 +14,3 @@ Node *TBT :: predecessor (Node *root){
         return root;
     }
 }
-
-void TBT :: predecessor (){
-    root = predecessor(root);
-}
