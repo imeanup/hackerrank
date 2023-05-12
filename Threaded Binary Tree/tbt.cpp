@@ -1,7 +1,7 @@
-// tbt.cpp
+// tbh.cpp
 
 #include "tbt.h"
 
-TBT :: TBT() {
+TBT :: TBT(){
     root = nullptr;
 }
