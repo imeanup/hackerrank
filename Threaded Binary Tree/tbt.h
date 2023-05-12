@@ -17,17 +17,19 @@ class TBT{
         Node *root;
         Node *insert(Node *root, int key);
         Node *remove(Node *root, int key);
+        Node *oneChild(Node *root, Node *par, Node *ptr);
+        Node *twoChild(Node *root, Node *par, Node *ptr);
+        Node *noChild(Node *root, Node *par, Node *ptr);
         void inorder(Node *root);
         void preorder(Node * root);
-        Node *successor(Node *root);
-        Node *predecessor(Node *root);
+        
     public:
         TBT();
+        Node *successor(Node *root);
+        Node *predecessor(Node *root);
         void insert(int key);
         void remove(int key);
         void inorder();
         void preorder();
-        void successor();
-        void predecessor();
 };
 #endif
