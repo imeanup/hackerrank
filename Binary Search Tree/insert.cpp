@@ -1,9 +1,18 @@
 #include "bst.h"
 
+void BST:: insert(int key) {
+    root = insert(root, key);
+}
+
 Node* BST:: insert(Node *root, int key){
-    Node *tmp, *par, *ptr;
-    ptr = root;
-    par = nullptr;
+    Node *tmp = new Node;
+    tmp->value = key;
+    tmp->left = nullptr;
+    tmp->right = nullptr;
+
+    Node *ptr = root;
+    Node *par = nullptr;
+
     while (ptr != nullptr){
         par = ptr;
         if (key < ptr->value){
@@ -13,15 +22,11 @@ Node* BST:: insert(Node *root, int key){
             ptr = ptr->right;
         }
         else{
-            cout << "Duplicate Key";
+            cout << "Duplicate Key: " << key << endl;
             return root;
         }
     }
-    tmp = new Node();
-    tmp->value = key;
-    tmp->left = nullptr;
-    tmp->right = nullptr;
-
+    
     if (!par){
         root = tmp;
     }
@@ -34,6 +39,43 @@ Node* BST:: insert(Node *root, int key){
     return root;
 }
 
-void BST:: insert(int key) {
-    root = insert(root, key);
+/*
+Node* BST:: insert(Node *root, int key){
+    Node *tmp = new Node;
+    tmp->value = key;
+    tmp->left = nullptr;
+    tmp->right = nullptr;
+
+    if (!root){
+        root = tmp;
+        return root;
+    }
+    Node *ptr = root;
+ 
+    while (true){
+        if (key < ptr->value){
+            if (ptr->left == nullptr){
+                ptr->left = tmp;
+                break;
+            }
+            else {
+                ptr = ptr->left;
+            }   
+        }
+        else if (key > ptr->value){
+            if (ptr->right == nullptr){
+                ptr->right = tmp;
+                break;
+            }
+            else {
+                ptr = ptr->right;
+            }
+        }
+        else{
+            cout << "Duplicate Key: " << key << endl;
+            break;
+        }
+    }
+    return root;
 }
+*/
