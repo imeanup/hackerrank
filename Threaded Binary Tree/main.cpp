@@ -36,6 +36,22 @@ int main(){
     tree.inorder();
     cout << endl;
 
+    int value = 13;
+    Node *node = tree.search(value);
+    Node *pred = tree.predecessor(node);
+    if (pred != nullptr) {
+        cout << "Predecessor of " << value << " " << pred->val << endl;
+    } else {
+        cout << "Predecessor not found" << endl;
+    }
+
+    Node *succ = tree.successor(node);
+    if (succ != nullptr){
+        cout << "Successor of " << value << " " << succ->val << endl;
+    }
+    else{
+        cout << "Successor not found" << endl;
+    }
     
     return 0;
 }
