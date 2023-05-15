@@ -20,16 +20,18 @@ class TBT{
         Node *oneChild(Node *root, Node *par, Node *ptr);
         Node *twoChild(Node *root, Node *par, Node *ptr);
         Node *noChild(Node *root, Node *par, Node *ptr);
+        Node *search(Node *root, int key);
         void inorder(Node *root);
         void preorder(Node * root);
         
     public:
         TBT();
-        Node *successor(Node *root);
-        Node *predecessor(Node *root);
         void insert(int key);
         void remove(int key);
         void inorder();
         void preorder();
+        Node *successor(Node *root);
+        Node *predecessor(Node *root);
+        Node *search(int key);
 };
 #endif
