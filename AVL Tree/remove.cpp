@@ -1,7 +1,5 @@
 // remove.cpp
 
-// remove.cpp
-
 #include "avl.h"
 
 Node *AVL :: remove(Node *pptr, int key){
