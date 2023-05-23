@@ -23,12 +23,17 @@ int main(){
     tree.inorder();
     cout << "\n";
 
+    tree.remove(15);
+    cout << "Inorder: ";
+    tree.inorder();
+    cout << "\n";
+
+
     return 0;
 }
 
-// main.cpp avl.cpp inorder.cc insert.cpp leftRotation.cpp rightRotation.cpp -o output
-
-
-/*
-searching.cpp is same as in BST
-*/
+// g++ main.cpp avl.cpp inorder.cc insert.cpp leftRotation.cpp rightRotation.cpp remove.cpp -o output
+// ./output                                                                                          
+// Inorder: 5 10 12 15 16 18 20 24 
+// Inorder: 5 10 12 14 15 16 18 20 24 
+// Inorder: 5 10 12 14 16 18 20 24 
