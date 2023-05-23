@@ -27,3 +27,8 @@ int main(){
 }
 
 // main.cpp avl.cpp inorder.cc insert.cpp leftRotation.cpp rightRotation.cpp -o output
+
+
+/*
+searching.cpp is same as in BST
+*/
