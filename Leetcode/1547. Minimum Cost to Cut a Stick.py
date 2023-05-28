@@ -31,3 +31,19 @@ class Solution:
                 dp[left][right] = ans
         
         return dp[0][m + 1]
+
+class Solution:
+    def minCost(self, n: int, cuts: List[int]) -> int:
+        cuts.sort()
+        cuts = [0] + cuts + [n]
+        m = len(cuts)
+        dp = [[float('inf')] * m for _ in range(m)]
+        for i in range(m - 1):
+            dp[i][i + 1] = 0
+        for L in range(2, m):
+            for i in range(m - L):
+                j = i + L
+                for k in range(i + 1, j):
+                    dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])
+                dp[i][j] += cuts[j] - cuts[i]
+        return dp[0][m - 1]
