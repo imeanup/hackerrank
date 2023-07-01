@@ -30,17 +30,17 @@ public:
     }
 
     ListNode *reverse(ListNode *start, ListNode *end){
-        ListNode *prev, *ptr, *nxt;
+        ListNode *prev, *curr, *nxt;
         prev = start;
-        ptr = start->next;
+        curr = start->next;
         nxt = start->next;
-        while (ptr != end){
-            nxt = ptr->next;
-            ptr->next= prev;
-            prev = ptr;
-            ptr = nxt;
+        while (curr != end){
+            nxt = curr->next;
+            curr->next= prev;
+            prev = curr;
+            curr = nxt;
         }
-        start->next->next = ptr;
+        start->next->next = curr;
         ListNode *tmp = start->next;
         start->next = prev;
         return tmp;
