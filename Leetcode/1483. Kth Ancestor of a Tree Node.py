@@ -11,17 +11,20 @@ class TreeAncestor:
                 self.up[i][0] = parent[i]
             else:
                 self.up[i][0] = -1
-        for v in range(n):
-            if v != 0:
-                self.depth[v] = self.depth[parent[v]] + 1
-            for j in range(1, self.LOG):
-                self.up[v][j] = self.up[self.up[v][j - 1]][j - 1]
+        for j in range(1, self.LOG):
+            for i in range(n):
+                if self.up[i][j - 1] == -1:
+                    self.up[i][j] = -1
+                else:
+                    self.up[i][j] = self.up[self.up[i][j - 1]][j - 1]
+
 
     def getKthAncestor(self, node: int, k: int) -> int:
-        for j in range(self.LOG - 1, -1, -1):
-            if k >= (1 << j):
-                node = self.up[node][j]
-                k -= (1 << j)
+        for i in range(self.LOG):
+            if k & (1 << i):
+                node = self.up[node][i]
+                if node == -1:
+                    break
         return node
 
 
