@@ -74,3 +74,21 @@ We will have our head and tail attributes both set to dummy nodes. The "real" he
 > These dummy nodes can have any keys and any values, it doesn't matter. We should initialize `head.next = tail` and `tail.prev = head`.
 
 We now have everything we need! Let's implement some methods.
+
+#### Removing a node from the linked list
+
+We need to perform removals when we update/fetch an existing key, or when the data structure exceeds capacity. Let's write a helper method remove(ListNode node) that removes node from the linked list.
+
+This can be done in the following steps:
+
+1. Let's call `nextNode = node.next` and `prevNode = node.prev`. Currently, `nextNode.prev = node` and `prevNode.next = node`. To remove node from the linked list, we need to reassign `nextNode.prev = prevNode` and `prevNode.next = nextNod`e.
+2. We can perform both these reassignments without needing to declare `prevNode` or `nextNode` using the following code:
+3. `node.prev.next = node.next`
+4. `node.next.prev = node.prev`
+> Imagine you have `A <-> B <-> C`. To remove `B`, we need `A` and `C` to become adjacent, i.e. `A <-> C`. Here, `prevNode = A` and `nextNode = C`.
+```
+void remove(Node *node) {
+    node->prev->next = node->next;
+    node->next->prev = node->prev;
+}
+```
