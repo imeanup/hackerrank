@@ -39,3 +39,43 @@ public:
         return node;
     }
 };
+
+
+// O(N)-Time O(N)-Space
+class Solution {
+public:
+    unordered_map<Node*, Node*> visited;
+
+    Node *getCloneNode(Node *node){
+        if (node != nullptr){
+            if (visited.count(node)){
+                return visited[node];
+            }
+            else{
+                visited[node] = new Node(node->val, nullptr, nullptr);
+                return visited[node];
+            }
+        }
+        return nullptr;
+    }
+
+    Node* copyRandomList(Node* head) {
+        if (head == nullptr){
+            return nullptr;
+        }
+
+        Node *oldNode = head;
+
+        Node *newNode = new Node(oldNode->val);
+        visited[oldNode] = newNode;
+
+        while (oldNode != nullptr){
+            newNode->random = getCloneNode(oldNode->random);
+            newNode->next = getCloneNode(oldNode->next);
+
+            oldNode = oldNode->next;
+            newNode = newNode->next;
+        }
+        return visited[head];
+    }
+};
