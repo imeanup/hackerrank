@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+<body>
 <svg width="54" height="47" viewBox="0 0 54 47" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_1558_12020)">
       <mask id="mask0_1558_12020" style="mask-type: luminance" maskUnits="userSpaceOnUse" x="0" y="26" width="17" height="16">
@@ -54,3 +57,7 @@
       </clipPath>
     </defs>
   </svg>
+
+</body>
+</html>
+
