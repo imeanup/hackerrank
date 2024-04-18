@@ -48,3 +48,5 @@ Now that we have found the point that gives the minimum value, we can determine 
 - If the point is outside the interval, the minimum value is the distance to the nearest endpoint of the interval.
 
 By using only a constant number of set operations for both updates and queries, we can solve the problem in $O(Q \log Q)$ time. Additionally, there are other solutions based on convexity, such as ternary search on the function value itself or binary search on the number of change points using a Binary Indexed Tree.
+
+[Link 1](https://codeforces.com/blog/entry/67227?#comment-513489)
