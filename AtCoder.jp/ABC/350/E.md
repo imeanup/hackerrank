@@ -60,7 +60,7 @@ First, let's consider the following problem:
 
 Let $f(N)$ denote the expected value we seek. Then, we have:
 
-$ f(N) = Y + \frac{1}{5} f(\left\lfloor \frac{N}{2} \right\rfloor) + \frac{1}{5} f(\left\lfloor \frac{N}{3} \right\rfloor) + \frac{1}{5} f(\left\lfloor \frac{N}{4}\right\rfloor ) + \frac{1}{5} f(\left\lfloor \frac{N}{5}\right\rfloor) + \frac{1}{5} f(\left\lfloor\frac{N}{6}\right\rfloor)$
+$f(N) = Y + \frac{1}{5} f(\left\lfloor \frac{N}{2} \right\rfloor) + \frac{1}{5} f(\left\lfloor \frac{N}{3} \right\rfloor) + \frac{1}{5} f(\left\lfloor \frac{N}{4}\right\rfloor ) + \frac{1}{5} f(\left\lfloor \frac{N}{5}\right\rfloor) + \frac{1}{5} f(\left\lfloor\frac{N}{6}\right\rfloor)$
 
 Therefore, we can solve it using recursion with memoization. (Regarding computational complexity, see below).
 
@@ -74,13 +74,13 @@ Next, let's consider the following problem:
 
 Let $f(N)$ denote the expected value we seek. Then, we have:
 
-$ f(N) = \frac{6}{5}Y + \frac{1}{5} f(\left\lfloor \frac{N}{1} \right\rfloor) + \frac{1}{5} f(\left\lfloor \frac{N}{2} \right\rfloor) + \frac{1}{5} f(\left\lfloor \frac{N}{3}\right\rfloor ) + \frac{1}{5} f(\left\lfloor \frac{N}{4}\right\rfloor) + \frac{1}{5} f(\left\lfloor\frac{N}{5}\right\rfloor) + \frac{1}{5} f(\left\lfloor \frac{N}{6} \right \rfloor)$
+$f(N) = \frac{6}{5}Y + \frac{1}{5} f(\left\lfloor \frac{N}{1} \right\rfloor) + \frac{1}{5} f(\left\lfloor \frac{N}{2} \right\rfloor) + \frac{1}{5} f(\left\lfloor \frac{N}{3}\right\rfloor ) + \frac{1}{5} f(\left\lfloor \frac{N}{4}\right\rfloor) + \frac{1}{5} f(\left\lfloor\frac{N}{5}\right\rfloor) + \frac{1}{5} f(\left\lfloor \frac{N}{6} \right \rfloor)$
 
 <!-- We seem to be stuck in a recursion since $f(N)$ appears on the right-hand side. However, by rearranging the equation and multiplying both sides by $\frac{6}{5}$, we obtain: -->
 
 Although it appears recursive due to $f(N)$ appearing on the right side, by shifting to the left and multiplying the entire equation by $\frac{6}{5}$, we get:
 
-$ f(N) = Y + \frac{1}{6} f(\left\lfloor \frac{N}{1} \right\rfloor) + \frac{1}{6} f(\left\lfloor \frac{N}{2} \right\rfloor) + \frac{1}{6} f(\left\lfloor \frac{N}{3}\right\rfloor ) + \frac{1}{6} f(\left\lfloor \frac{N}{4}\right\rfloor) + \frac{1}{6} f(\left\lfloor\frac{N}{5}\right\rfloor) + \frac{1}{6} f(\left\lfloor \frac{N}{6} \right \rfloor)$
+$f(N) = Y + \frac{1}{6} f(\left\lfloor \frac{N}{1} \right\rfloor) + \frac{1}{6} f(\left\lfloor \frac{N}{2} \right\rfloor) + \frac{1}{6} f(\left\lfloor \frac{N}{3}\right\rfloor ) + \frac{1}{6} f(\left\lfloor \frac{N}{4}\right\rfloor) + \frac{1}{6} f(\left\lfloor\frac{N}{5}\right\rfloor) + \frac{1}{6} f(\left\lfloor \frac{N}{6} \right \rfloor)$
 
 Now, we can solve it using recursion with memoization. (Regarding computational complexity, see below).
 
