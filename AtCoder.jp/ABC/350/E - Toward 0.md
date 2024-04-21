@@ -92,4 +92,4 @@ $f(N) = \min⁡\left(X + f\left(\left\lfloor\frac{N}{A}\right\rfloor\right), \fr
 
 Thus, it can be solved using recusrion with memoization.
 
-To compute f(N), we only need to consider $\Bigg\lfloor\dfrac{\left\lfloor\frac{N}{b}\right\rfloor}{b}\Bigg\rfloor$. Note that we only need to consider those that can be represented as $m = 2^p3^q5^r$. Since there are at most 𝑂((log ⁡𝑁)^3) such values, the overall computational complexity is $𝑂((\log ⁡𝑁)^3)$.
+To compute $f(N)$, we only need to consider $\Bigg\lfloor\dfrac{\left\lfloor\frac{N}{b}\right\rfloor}{b}\Bigg\rfloor$. Note that we only need to consider those that can be represented as $m = 2^p3^q5^r$. Since there are at most $𝑂((log ⁡𝑁)^3)$ such values, the overall computational complexity is $𝑂((\log ⁡𝑁)^3)$.
