@@ -315,6 +315,8 @@ Furthermore, a problem that uses a similar approach to this explanation is JOIsp
 
 ---
 
+> by MMNMM
+<!-- 
 **別解**
 
 ---
@@ -325,46 +327,100 @@ Furthermore, a problem that uses a similar approach to this explanation is JOIsp
 
 > #### 解法 1
 >
-> 整数の集合 neighbor⁡𝑖 $(1 \le i \le N)$ と整数の組の集合 $\text{joint}_i, (1 \le i \le N)$ を管理する。
+> 整数の集合 $\text{neighbor}_i,  (1 \le i \le N)$ と整数の組の集合 $\text{joint}_i, (1 \le i \le N)$ を管理する。
 >
 > * 辺 $(u, v)$ の追加クエリでは、
 >   1. すべての $w \in \text{neighbor}_u$ に対し、$\text{joint}_v$ に $(w, u)$ を、$\text{joint}_w$ に $(v, u)$ を追加する。
->   2. すべての $w \in \text{neighbor}_v$ に対し、joint⁡𝑢**j**o**i**n**t**u に (𝑤,𝑣)**(**w**,**v**)** を、$\text{joint}_w$ に $(u, v)$ を追加する。
->   3. neighbor⁡𝑢**n**e**i**g**h**b**o**r**u** に 𝑣**v** を、neighbor⁡𝑣**n**e**i**g**h**b**o**r**v** に 𝑢**u** を追加する。
-> * 頂点対 $(u, v)$ に対する質問クエリでは、joint⁡𝑢**j**o**i**n**t**u に (𝑣,𝑘)**(**v**,**k**)** の形の要素が含まれているか確認し、含まれているならば 𝑘**k** を回答する。そうでなければ、0**0** を回答する。
+>   2. すべての $w \in \text{neighbor}_v$ に対し、$\text{joint}_u$ に $(w, v)$ を、$\text{joint}_w$ に $(u, v)$ を追加する。
+>   3. $\text{neighbor}_u$ に $v$ を、$\text{neighbor}_v$ に $u$ を追加する。
+> * 頂点対 $(u, v)$ に対する質問クエリでは、$\text{joint}_u$ に $(v, k)$ の形の要素が含まれているか確認し、含まれているならば $k$ を回答する。そうでなければ、$0$ を回答する。
 
-適切な連想配列などを用いることで、質問クエリは 𝑂(1)**O**(**1**) 時間や 𝑂(log⁡𝑁)**O**(**lo**g**N**) 時間で答えることができます。
+適切な連想配列などを用いることで、質問クエリは $O(1)$ 時間や $O(\log N)$ 時間で答えることができます。
 
-しかし、辺の追加クエリでは頂点 𝑢,𝑣**u**,**v** の次数 𝑑𝑢,𝑑𝑣**d**u,**d**v に対して 𝑂(𝑑𝑢+𝑑𝑣)**O**(**d**u+**d**v) の時間計算量および空間計算量を使い、クエリ全体では最悪 𝑂(𝑄2)**O**(**Q**2**)** となってしまいます。
+しかし、辺の追加クエリでは頂点 $u, v$ の次数 $d_u, d_v$ に対して $O(d_u + d_v)$ の時間計算量および空間計算量を使い、クエリ全体では最悪 $O(Q^2)$ となってしまいます。
 
 > #### 解法 2
 >
 > 整数の集合 neighbor⁡𝑖 $(1 \le i \le N)$ を管理する。
 >
-> * 辺 $(u, v)$ の追加クエリでは、neighbor⁡𝑢**n**e**i**g**h**b**o**r**u** に 𝑣**v** を、neighbor⁡𝑣**n**e**i**g**h**b**o**r**v** に 𝑢**u** を追加する。
-> * 頂点対 $(u, v)$ に対する質問クエリでは、すべての 1≤𝑤≤𝑁**1**≤**w**≤**N** を探索し、𝑢∈neighbor⁡𝑤**u**∈**n**e**i**g**h**b**o**r**w** かつ 𝑣∈neighbor⁡𝑤**v**∈**n**e**i**g**h**b**o**r**w** であるような 𝑤**w** が存在すればこれを回答する。存在しなければ、0**0** を回答する。
+> * 辺 $(u, v)$ の追加クエリでは、$\text{neighbor}_u$ に $v$ を、$\text{neighbor}_v$ に $u$ を追加する。
+> * 頂点対 $(u, v)$ に対する質問クエリでは、すべての $1 \le w \le N$ を探索し、$u \in \text{neighbor}_w$ かつ $v \in \text{neighbor}_w$ であるような $w$ が存在すればこれを回答する。存在しなければ、$0$ を回答する。
 
-この解法も適切な連想配列などを用いることで、辺の追加クエリを 𝑂(1)**O**(**1**) 時間や 𝑂(log⁡𝑁)**O**(**lo**g**N**) 時間で処理することができます。
+この解法も適切な連想配列などを用いることで、辺の追加クエリを $O(1)$ 時間や $O(\log N)$ 時間で処理することができます。
 
-しかし、質問クエリでは 𝑂(𝑁log⁡𝑁)**O**(**N**log**N**) 時間や 𝑂(𝑁)**O**(**N**) 時間が必要となり、クエリ全体では最悪 𝑂(𝑄𝑁log⁡𝑁)**O**(**Q**N**lo**g**N**) 時間や 𝑂(𝑄𝑁)**O**(**Q**N**)** 時間となってしまいます。
+しかし、質問クエリでは $O(N\log N)$ 時間や $O(N)$ 時間が必要となり、クエリ全体では最悪 $O(Q N \log N)$ 時間や $O(Q N)$ 時間となってしまいます。
 
 ここで、解法 1 と解法 2 を組み合わせることを考えます。
 
 > #### 解法1+2
 >
-> 整数の集合 neighbor⁡𝑖 $(1 \le i \le N)$ と整数の組の集合 joint⁡𝑖 (1≤𝑖≤𝑁)**j**o**i**n**t**i**** **(**1**≤**i**≤**N**)** を管理する。 また、整数 $D$ をひとつ定める。
+> 整数の集合 neighbor⁡𝑖 $(1 \le i \le N)$ と整数の組の集合 ${joint⁡}_i , (1 \le i \le N)$ を管理する。 また、整数 $D$ をひとつ定める。
 >
 > * 辺 $(u, v)$ の追加クエリでは、
->   1. **∣𝑛𝑒𝑖𝑔ℎ𝑏𝑜𝑟⁡𝑢∣≤𝐷**∣**n**e**i**g**h**b**o**r**u****∣**≤**D ならば** 、すべての $w \in \text{neighbor}_u$ に対し、$\text{joint}_v$ に $(w, u)$ を、$\text{joint}_w$ に $(v, u)$ を追加する。
->   2. **∣𝑛𝑒𝑖𝑔ℎ𝑏𝑜𝑟⁡𝑣∣≤𝐷**∣**n**e**i**g**h**b**o**r**v****∣**≤**D ならば** 、すべての $w \in \text{neighbor}_v$ に対し、joint⁡𝑢**j**o**i**n**t**u に (𝑤,𝑣)**(**w**,**v**)** を、$\text{joint}_w$ に $(u, v)$ を追加する。
->   3. neighbor⁡𝑢**n**e**i**g**h**b**o**r**u** に 𝑣**v** を、neighbor⁡𝑣**n**e**i**g**h**b**o**r**v** に 𝑢**u** を追加する。
-> * 頂点対 $(u, v)$ に対する質問クエリでは、joint⁡𝑢**j**o**i**n**t**u に (𝑣,𝑘)**(**v**,**k**)** の形の要素が含まれているか確認し、含まれているならば 𝑘**k** を回答する。そうでなければ、**∣𝑛𝑒𝑖𝑔ℎ𝑏𝑜𝑟⁡𝑤∣>𝐷**∣**n**e**i**g**h**b**o**r**w****∣**>**D であるような**すべての 1≤𝑤≤𝑁**1**≤**w**≤**N** を探索し、𝑢∈neighbor⁡𝑤**u**∈**n**e**i**g**h**b**o**r**w** かつ 𝑣∈neighbor⁡𝑤**v**∈**n**e**i**g**h**b**o**r**w** であるような 𝑤**w** が存在すればこれを回答する。存在しなければ、0**0** を回答する。
+>   1. **$|\text{neighbor}_u | \le D$ ならば** 、すべての $w \in \text{neighbor}_u$ に対し、$\text{joint}_v$ に $(w, u)$ を、$\text{joint}_w$ に $(v, u)$ を追加する。
+>   2. **$|\text{neighbor}_v| \le D$ ならば** 、すべての $w \in \text{neighbor}_v$ に対し、$\text{joint}_u$ に $(w, v)$ を、$\text{joint}_w$ に $(u, v)$ を追加する。
+>   3. $\text{neighbor}_u$ に $v$ を、$\text{neighbor}_v$ に $u$ を追加する。
+> * 頂点対 $(u, v)$ に対する質問クエリでは、$\text{joint}_u$ に $(v, k)$ の形の要素が含まれているか確認し、含まれているならば $k$ を回答する。そうでなければ、**$|\text{neighbor}_w| > D$ であるような** すべての $1 \le w \le N$ を探索し、$u \in \text{neighbor}_w$ かつ $v \in \text{neighbor}_w$ であるような $w$ が存在すればこれを回答する。存在しなければ、$0$ を回答する。
 
-このように変形し、∣neighbor⁡𝑤∣>𝐷**∣**n**e**i**g**h**b**o**r**w****∣**>**D となるような 𝑤**w** 全体も同様に管理することで、追加クエリの計算時間を $O(QD)$（やそれに $\log$ がつく形）に、質問クエリの計算時間を $O^{\sim}\left(\frac{Q^2}{D}\right)$（やそれに $\log$ がつく形）にすることができます。
+このように変形し、$|\text{neighbor}_w| > D$ となるような $w$ 全体も同様に管理することで、追加クエリの計算時間を $O(QD)$（やそれに $\log$ がつく形）に、質問クエリの計算時間を $\widetilde O(\frac{Q^2}{D})$（やそれに $\log$ がつく形）にすることができます。
 
 よって、$D = O(\sqrt{Q})$ などととることによって全体の計算時間を $O(Q\sqrt{Q})$（やそれに $\log$ がつく形）とすることができます。
 
-最悪空間計算量が $O(QD)$ となることなどから、$D$ の値は小さめに取ることで定数倍が良好になります。
+最悪空間計算量が $O(QD)$ となることなどから、$D$ の値は小さめに取ることで定数倍が良好になります。 -->
+
+
+**Another Solution**
+
+---
+
+By performing a case analysis based on the degree of vertices, this problem can also be solved.
+
+First, let's consider two solutions as follows:
+
+> #### Solution 1
+>
+> Manage sets of integers $\text{neighbor⁡}_i$ $(1 \le i \le N)$ and sets of pairs of integers $\text{joint}_i$ $(1 \le i \le N)$.
+>
+> * For an edge $(u, v)$ addition query:
+>   1. For each $w \in \text{neighbor}_u$, add $(w, u)$ to $joint_v$ and $(v, u)$ to $\text{joint}_w$.
+>   2. For each $w \in \text{neighbor}_v$, add $(w, v)$ to $joint_u$ and $(u, v)$ to $joint_w$.
+>   3. Add $v$ to $neighbor_u$ and $u$ to $neighbor_v$.
+> * For a query regarding vertex pair $(u, v)$:
+>   Check if $joint_u$ contains an element in the form $(v, k)$, and if so, return $k$. Otherwise, return $0$.
+
+By using appropriate associative arrays, query queries can be answered in $O(1)$ time or $O(\log N)$ time.
+
+However, for edge addition queries, it requires a time complexity and space complexity of $O(d_u + d_v)$ with respect to the degrees $d_u$ and $d_v$ of vertices $u$ and $v$, respectively, and in the worst case, the overall complexity becomes $O(Q^2)$.
+
+> #### Solution 2
+>
+> Manage sets of integers $neighbor⁡_i$ $(1 \le i \le N)$.
+>
+> * For an edge $(u, v)$ addition query, add $v$ to $neighbor_u$ and $u$ to $neighbor_v$.
+> * For a query regarding vertex pair $(u, v)$, search all $1 \le w \le N$, and if there exists $w$ such that $u \in \text{neighbor}_w$ and $v \in \text{neighbor}_w$, answer this. Otherwise, return $0$.
+
+By using appropriate associative arrays, edge addition queries can be processed in $O(1)$ time or $O(\log N)$ time.
+
+However, for query queries, it requires $O(N\log N)$ time or $O(N)$ time, and in the worst case, the overall complexity becomes $O(Q N \log N)$ time or $O(Q N)$ time.
+
+Now, let's consider combining Solution 1 and Solution 2.
+
+> #### Solution1+2
+>
+> Manage sets of integers $neighbor⁡_i$ $(1 \le i \le N)$ and sets of pairs of integers $joint_i$ $(1 \le i \le N)$. Also, choose an integer $D$.
+>
+> * For an edge $(u, v)$ addition query:
+>   1. **If $|\text{neighbor}_u | \le D$**, for each $w \in \text{neighbor}_u$, add $(w, u)$ to $joint_v$ and $(v, u)$ to $joint_w$.
+>   2. **If $|\text{neighbor}_v| \le D$**, for each $w \in \text{neighbor}_v$, add $(w, v)$ to $joint_u$ and $(u, v)$ to $joint_w$.
+>   3. Add $v$ to $neighbor_u$ and $u$ to $neighbor_v$.
+> * For a query regarding vertex pair $(u, v)$:
+>   Check if $joint_u$ contains an element in the form $(v, k)$, and if so, return $k$. Otherwise, **search all $1 \le w \le N$ such that $|\text{neighbor}_w| > D$**, and if there exists $w$ such that $u \in \text{neighbor}_w$ and $v \in \text{neighbor}_w$, answer this. Otherwise, return $0$.
+
+By transforming in this way and managing all $w$ such that $|\text{neighbor}_w| > D$ in the same way, the computation time for additional queries can be $O(QD)$ (or with a $\log$ term), and the computation time for query queries can be $\widetilde O(\frac{Q^2}{D})$ (or with a $\log$ term).
+
+Therefore, by taking $D = O(\sqrt{Q})$, the overall computation time can be $O(Q\sqrt{Q})$ (or with a $\log$ term).
+
+Considering that the worst-case space complexity becomes $O(QD)$, choosing a smaller value for $D$ will result in a better constant factor.
 
 <details><summary><b>C++</b></summary>
 
