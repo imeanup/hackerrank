@@ -45,7 +45,7 @@ This problem is a fundamental problem in an algorithm called "plane sweep" (or "
 The double summation we want to find is:
 
 $$
-\sum_{i = 1}^{N} \sum_{i<j} \max(A_j - A_i, 0)
+\sum_{i = 1}^{N} \sum_{i < j} \max(A_j - A_i, 0)
 $$
 
 Here, the contribution to the double summation when $i$ is fixed can be expressed as:
