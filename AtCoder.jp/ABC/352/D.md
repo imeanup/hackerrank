@@ -31,7 +31,7 @@ $a$ の昇順にこの値を求めることを考えます。集合 $\{ Q_a, Q_{
 
 Let's consider exhaustive search for the value of $a$ in the problem statement. In other words, we want to find the following value for each $a = 1, 2, \cdots, N-K+1$:
 
-* The value of $i_K-i_1$ when we select $i_1 < i_2 <\cdots <i_K$ such that $\{P_{i_1}, P_{i_2}, \cdots, P_{i_K}\} = \{a, a+1, \cdots, a + K -1\}$.
+* The value of $i_K-i_1$ when we select $i_1 < i_2 < \cdots < i_K$ such that $\{P_{i_1}, P_{i_2}, \cdots, P_{i_K}\} = \{a, a+1, \cdots, a + K -1\}$.
 
 Here, we define a sequence $Q = (Q_1, Q_2, \cdots , Q_N)$, where $Q_j$ represents the value of $i$ satisfying $P_j = j$. If $P$ is a permutation of $(1, 2, \cdots, N)$, then $Q$ is also a permutation of $(1, 2, \cdots, N)$. Therefore, the above value can be rephrased as follows:
 
