@@ -13,7 +13,7 @@ When $P_N = i$, that is, when the giant $i$ is at the top, the height of the tal
 
 $$B_i + \sum_{j \ne i} A_j = B_i - A_i + \sum_{j = 1}^{N} A_j$$
 
-, and the answer is the maximum value of this for $i = 1, 2, \cdots, N$. However, using the fact that the value of $\sum{j=1}^{N} A_j$ does not depend on $i$, it can be understood that we only need to find the value of $\max(B_j-A_i)$.
+, and the answer is the maximum value of this for $i = 1, 2, \cdots, N$. However, using the fact that the value of $\sum_{j=1}^{N} A_j$ does not depend on $i$, it can be understood that we only need to find the value of $\max(B_j-A_i)$.
 
 This can be calculated with a time complexity of $O(N)$ using methods such as a for loop.
 
