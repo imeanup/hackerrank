@@ -5,13 +5,6 @@ using ll = int64_t;
 #define repi(i, x, n) for(int i=x;i<(n);i++)
 #define all(x) x.begin(), x.end()
 
-#include <bits/stdc++.h>
-using namespace std;
-using ll = int64_t;
-#define rep(i, n) for(int i=0;i<(n);i++)
-#define repi(i, x, n) for(int i=x;i<(n);i++)
-#define all(x) x.begin(), x.end()
-
 struct T{
     ll l, r;
 };
