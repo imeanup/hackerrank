@@ -123,7 +123,7 @@ When Takahashi chooses $x_1, x_2, \ldots, x_K$, the expected score that Aoki obt
 Since the graph is a Directed Acyclic Graph (DAG), we can solve this problem using Dynamic Programming (DP). Let $dp[k][j]$ represent the shortest path length from vertex 0 to vertex $j$ using $k$ edges. The desired answer is $dp[K+1][N+1]$. The transitions are given by:
 
 $$
-dp[k][j] = \min_{i<j} \{dp[k-1][i] + c(i, j)\} \quad (\star) 
+dp[k][j] = \min_{i<j} \{dp[k-1][i] + c(i, j)\} \quad \ (\star)
 $$
 
 where $c(i, j)$ is the weight of edge $(i, j)$. By precomputing the cumulative sums of $P_y$ and $P_y \times y$, $c(i, j)$ can be computed in $O(1)$ time per query.
