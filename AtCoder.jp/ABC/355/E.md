@@ -150,7 +150,7 @@ First, if $l = r$, then $\{[l, r]\}$ is the answer. If $l + 1 = r$, then if $l$ 
 
 Set $(l, r) := (\frac{l}{2}, \frac{r-1}{2})$, and then multiply each interval value in the answer by 2.
 
-### 2. When both $ l $ and $ r $ are even
+### 2. When both $l$ and $r$ are even
 
 Consider two cases:
 1. Treat $[l, r]$ as $[l, r-1] + [r, r]$: Set $(l, r) := (\frac{l}{2}, \frac{r}{2} - 1)$, and then double each interval value in the answer and add $[r, r]$.
@@ -158,11 +158,11 @@ Consider two cases:
 
 Choose the option with the fewer elements.
 
-### 3. When both $ l $ and $ r $ are odd
+### 3. When both $l$ and $r$ are odd
 
 Similar to case 2, split into two cases.
 
-### 4. When $ l $ is odd and $ r $ is even
+### 4. When $l$ is odd and $r$ is even
 
 Combine the considerations from cases 2 and 3, resulting in four possible cases.
 
