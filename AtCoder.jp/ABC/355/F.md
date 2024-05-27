@@ -13,10 +13,10 @@
 
 以下の実装例では次のような工夫をしています．
 
-</details><br>
-
 * $G$ には最初から $N-1$ 個の重み $10$ の辺 $\{1, 2\}, \{1, 3\}, \dots, \{1, N\}$ が貼られており，$N-1+Q$ 個の辺追加クエリがあるとみなす．
 * 答えを直接管理する．最初の時点では $c(G_k) = N(0 \le k < 10)$ であるため $ans = 10N-10$ である．各クエリに対して，連結成分数が減るごとに答えを更新する．
+
+</details><br>
 
 Let's assume the maximum weight of an edge is $W = 10$. We define $G_k (0 \leq k \leq W)$ as the subgraph of graph $G$ that consists of the edges in $G$ with weights not exceeding $k$. Let $c(H)$ denote the number of connected components in a graph $H$. The sum of the weights of the edges in the MST (Minimum Spanning Tree) of graph $G$ is equal to $\left( \sum_{k=0}^{W-1} c(G_k) - 1 \right)$.
 
