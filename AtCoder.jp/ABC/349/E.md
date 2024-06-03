@@ -54,7 +54,7 @@ $f$ が呼び出される回数を大雑把に見積もってみましょう．1
 
 ### Determining Victory or Defeat
 
-The state of the board at each point in the game can be represented by a $3 \times 3$ 2D array $C$, where each element takes one of the values $\{$ white, red, blue $\}$. In other words, $C_{i,j}$ corresponds to the color of square $(i, j)$. Let $f(C)$ denote the player who ultimately wins when the game continues from the state with colors $C$.
+The state of the board at each point in the game can be represented by a $3 \times 3$ 2D array $C$, where each element takes one of the values $\{\text{white, red, blue} \}$. In other words, $C_{i,j}$ corresponds to the color of square $(i, j)$. Let $f(C)$ denote the player who ultimately wins when the game continues from the state with colors $C$.
 
 Let $I$ be a $3 \times 3$ 2D array where all elements are white (corresponding to the initial state). The answer we seek is $f(I)$, so if we can efficiently determine $f(C)$ for any given $C$, we can solve the problem.
 
