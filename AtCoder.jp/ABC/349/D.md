@@ -1,10 +1,11 @@
-<!-- 良い数列は，セグメント木の区間に対応しています．例えば入力例 $1$ の $S(3, 19)$ を良い数列に分割する方法は，下の図の赤い区間で表現することができます． -->
 
-A good sequence corresponds to intervals in a segment tree. For example, the method of partitioning the good sequence in example 1, $S(3, 19)$, can be represented by the red intervals in the figure below.
+## [D - Divide Interval](https://atcoder.jp/contests/abc349/tasks/abc349_d)
 
-![](https://img.atcoder.jp/abc349/58acfeba45a3cbb1726442d669e1e966.png)
+<details><summary>Japanese Editorial <b>Click here</b></summary><br>
 
-<!-- 左から順番に分割する方法を決めていくことにします．個数が最小になるようにするとき，できるだけ長い区間を貪欲に取っていくことが最善です．
+良い数列は，セグメント木の区間に対応しています．例えば入力例 $1$ の $S(3, 19)$ を良い数列に分割する方法は，下の図の赤い区間で表現することができます．
+
+ 左から順番に分割する方法を決めていくことにします．個数が最小になるようにするとき，できるだけ長い区間を貪欲に取っていくことが最善です．
 
 入力例 $1 S(3, 19)$ を例にとってみます．
 
@@ -21,7 +22,74 @@ A good sequence corresponds to intervals in a segment tree. For example, the met
 
 を同時に満たすような最大の $i$ を $i_0$ としたとき $S(l, l + 2^i_0)$ になります．
 
-実装例 (Python) -->
+実装例 (Python)
+
+```py
+L, R = map(int, input().split())
+ans = []
+while L != R:
+    i = 0
+    while L % pow(2, i+1) == 0 and L+pow(2, i+1) <= R:
+        i += 1
+    ans.append([L, L+pow(2, i)])
+    L += pow(2, i)
+print(len(ans))
+for l, r in ans:
+    print(l, r)
+```
+
+また，よい数列に分割する方法をセグメント木の区間に対応させるとき，区間は山型（右上がり→右下がり）になるという性質があります（すなわち，良い数列を $S(l_1, r_1) = (2^i_1 j_1, 2^i_1(j_1+1)) , \cdots, S(l_M, r_M) = (2^i_M j_M, 2^i_M(j_M+1))$ としたとき，ある整数 $k$ が存在して $i_1 < \cdots < i_k > \cdots > i_M $ になっています）．これを利用して解くこともできます．
+
+実装例 (Python)
+
+```py
+L, R = map(int, input().split())
+ans = []
+for i in range(61):
+    if L % (pow(2, i+1)) == pow(2, i) and L+pow(2, i) <= R:
+        ans.append([L, L+pow(2, i)])
+        L += pow(2, i)
+for i in range(60, -1, -1):
+    if L+pow(2, i) <= R:
+        ans.append([L, L+pow(2, i)])
+        L += pow(2, i)
+print(len(ans))
+for l, r in ans:
+    print(l, r)
+```
+
+さらに別の方法として，下から決めていくこともできます．多くのセグメント木の実装では区間クエリを下側から順番に見ていきながら処理していますが，それと同じことをすればよいです．下から順番に見ていって，左側と右側それぞれで長さ $2^i$ の数列を選択するかを決めていきます．左側で長さ $2^i$ の数列を選択する条件は
+
+* $L$ の $i$ bit 目が立っている．
+* $L < R$
+
+です．右側も同様です．
+
+実装例 (Python)
+
+```py
+L, R = map(int, input().split())
+ans_left, ans_right = [], []
+i = 0
+while L < R:
+    if (L >> i) & 1:
+        ans_left.append([L, L+(1 << i)])
+        L += 1 << i
+    if (R >> i) & 1:
+        ans_right.append([R-(1 << i), R])
+        R -= 1 << i
+    i += 1
+ans = ans_left+ans_right[::-1]
+print(len(ans))
+for l, r in ans:
+    print(l, r)
+```
+
+</details><br>
+
+A good sequence corresponds to intervals in a segment tree. For example, the method of partitioning the good sequence in example 1, $S(3, 19)$, can be represented by the red intervals in the figure below.
+
+![](https://img.atcoder.jp/abc349/58acfeba45a3cbb1726442d669e1e966.png)
 
 We will decide the method of partitioning from left to right. When minimizing the number of segments, it is best to greedily take as long intervals as possible.
 
@@ -54,11 +122,9 @@ for l, r in ans:
     print(l, r)
 ```
 
-<!-- また，よい数列に分割する方法をセグメント木の区間に対応させるとき，区間は山型（右上がり→右下がり）になるという性質があります（すなわち，良い数列を $S(l_1, r_1) = (2^i_1 j_1, 2^i_1(j_1+1)) , \cdots, S(l_M, r_M) = (2^i_M j_M, 2^i_M(j_M+1))$ としたとき，ある整数 $k$ が存在して $i_1 < \cdots < i_k > \cdots > i_M $ になっています）．これを利用して解くこともできます． -->
-
 Also, when correlating the method of partitioning a good sequence with intervals in a segment tree, there is a property that the intervals become mountain-shaped (rising rightward → falling rightward). In other words, when representing a good sequence as $S(l_1, r_1) = (2^{i_1} j_1, 2^{i_1}(j_1+1)), \cdots, S(l_M, r_M) = (2^{i_M} j_M, 2^{i_M}(j_M+1))$, there exists an integer $k$ such that $i_1 < \cdots < i_k > \cdots > i_M$. This property can also be utilized to solve the problem.
 
-実装例 (Python)
+Implementation (Python)
 
 ```py
 L, R = map(int, input().split())
@@ -76,14 +142,6 @@ for l, r in ans:
     print(l, r)
 ```
 
-
-<!-- さらに別の方法として，下から決めていくこともできます．多くのセグメント木の実装では区間クエリを下側から順番に見ていきながら処理していますが，それと同じことをすればよいです．下から順番に見ていって，左側と右側それぞれで長さ $2^i$ の数列を選択するかを決めていきます．左側で長さ $2^i$ の数列を選択する条件は
-
-* $L$ の $i$ bit 目が立っている．
-* $L < R$
-
-です．右側も同様です． -->
-
 Another method is to determine from the bottom up. Many implementations of segment trees process interval queries from the bottom up, examining them in order. We can do the same. We start from the bottom and decide whether to select a sequence of length $2^i$ on the left and right sides respectively. The condition to select a sequence of length $2^i$ on the left side is:
 
 * The $i$-th bit of $L$ is set.
@@ -91,7 +149,7 @@ Another method is to determine from the bottom up. Many implementations of segme
 
 The condition for the right side is similar.
 
-実装例 (Python)
+Implementation (Python)
 
 ```py
 L, R = map(int, input().split())
@@ -125,7 +183,7 @@ int main(){
     ll L, R;
     cin >> L >> R;
     vector<pair<ll, ll>> ans;
-    
+  
     while (L != R){
         int i = 0;
         while (L % (1LL << (i+1)) == 0 && (L + (1LL << (i+1)) <= R)) {
@@ -205,7 +263,6 @@ int main(){
 ```
 
 </details>
-
 
 <details><summary>4. C++ </summary>
 
