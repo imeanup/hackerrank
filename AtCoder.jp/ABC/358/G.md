@@ -20,8 +20,6 @@ $i \le HW$ の範囲のみ計算すればよいため、上の dp は時間計�
 
 </details><br>
 
-## [G - AtCoder Tour](https://atcoder.jp/contests/abc358/tasks/abc358_g)
-
 In the optimal solution, Takahashi should only stay on the cell with the maximum $A_{i,j}$ among the cells he has visited. If he stays on a different cell, the solution can be improved by instead staying on the cell with the maximum $A_{i,j}$. Additionally, once Takahashi decides to stay on a cell, he should continue to stay there for the rest of his actions.
 
 Let $G_i, G_j$ be the cell where Takahashi ends up after all his actions. From the above fact, Takahashi can move from $S_i, S_j$ to $G_i, G_j$ and then repeatedly stay on $G_i, G_j$ zero or more times.
