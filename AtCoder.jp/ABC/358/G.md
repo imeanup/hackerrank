@@ -24,12 +24,12 @@ In the optimal solution, Takahashi should only stay on the cell with the maximum
 
 Let $G_i, G_j$ be the cell where Takahashi ends up after all his actions. From the above fact, Takahashi can move from $S_i, S_j$ to $G_i, G_j$ and then repeatedly stay on $G_i, G_j$ zero or more times.
 
-Consider the movement from $S_i, S_j$ to $G_i, G_j$. Based on the above, Takahashi will not stay during this movement. Moreover, he will not visit any cell more than once, meaning he won't pass through the same cell twice. If he were to pass through cell \((p, q)\) twice, removing the process of leaving \((p, q)\) and then returning to it, and instead staying on $G_i, G_j$, would not worsen the solution.
+Consider the movement from $S_i, S_j$ to $G_i, G_j$. Based on the above, Takahashi will not stay during this movement. Moreover, he will not visit any cell more than once, meaning he won't pass through the same cell twice. If he were to pass through cell $(p, q)$ twice, removing the process of leaving $(p, q)$ and then returning to it, and instead staying on $G_i, G_j$, would not worsen the solution.
 
 Therefore, we only need to consider paths from $S_i, S_j$ to $G_i, G_j$ that have a length of $HW$ or less.
 
 This allows us to solve the problem using a straightforward dynamic programming (dp) approach.
 
-Specifically, let $dp_{i,j,k}$ be the maximum sum of fun obtained after $i$ actions and being at cell \((j, k)\). The answer will be $\max ((K-i) A_{j,k} + dp_{i,j,k})$.
+Specifically, let $dp_{i,j,k}$ be the maximum sum of fun obtained after $i$ actions and being at cell $(j, k)$. The answer will be $\max ((K-i) A_{j,k} + dp_{i,j,k})$.
 
 Since we only need to compute this for $i \le HW$, the dp calculation can be done in $O((HW)^2)$ time. Be mindful of cases where $K < HW$.
