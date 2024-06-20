@@ -1,3 +1,42 @@
+## [D-Integer Cards](https://atcoder.jp/contests/abc127/tasks/abc127_d)
+
+<details><summary>Japanese Editorial </summary><br>
+
+書き換える操作は好きな順番で行っても構いません。なぜなら、同じカードに対して $2$ 回以上書き換える のは無駄だからです。また、$C_i$ に $B_i$ 枚まで書き換える操作は、$C_i$ に 1 個まで書き換える操作を $B_i$ 回行え ると考えます。各 $C_i$ を $B_i$ 個ずつ並べた列を $D_1, D_2, \dots, D_{\sum B_i}$ とします。すると、操作は「選んだことの ない i を選んで 1 枚まで Di に書き換える」と考えることができます。同じカードに対して 2 回以上書き換 えるのは無駄なので、この操作は合計で $N$ 回しか行いません。したがって、$D_i$ の大きい方から $N$ 個まで取 り出した列を新しい $D$ として考えても構いません。
+
+$X$ 枚書き換えるとします。すると、書き換え元は小さい方から $X$ 枚書き換えるのが最適です。書き換え先 は $D_i$ の大きいものから順に $X$ 個選ぶのが最適です。$X$ を $1$ ずらすことによって書き換え元と書き換え先 はそれぞれ $1$ つずつしか変化しないため、$X$ を順に捜査することで $O(M\log M + N \log N)$ の計算時間で解 くことができます。
+
+実 装 で は 、$D$ の 大 き い 方 か ら $N$ 個 ま で 取 り 出 す 部 分 が 難 し い か も し れ ま せ ん 。こ れ は 、$(B_1, C_1), \dots,(B_M, C_M)$ を $C_i$ の大きい順にソートして$^{*1}$配列 $D$ が $N$ 未満である間 $C_i$ を $B_i$ 個ま で $1$ 個ずつ $D$ に追加していく実装が楽でしょう。
+
+最適な X を求めることもできます。$A, D$ をソートして $A_1 \le A_2 \le \dots \le A_N$ かつ $D_1 \ge D_2 \ge \dots \ge D_{|D|}$ とします。すると、前述のアルゴリズムでは $X$ を $i − 1$ から $i$ にずらすことによって合計値は $D_i − A_i$ 変化 しますが、$D_i − A_i$ は単調非増加なので $D_i − A_i \ge 0$ すなわち $D_i \ge A_i$ である間だけ操作を続けるのが最適 です。すなわち、そのような $i$ の最大値 (なければ $0$) を $X$ とするのが最適です。
+
+別解
+
+残す整数と書き換え先とする整数を合計で $N$ 個選んで $$ 個の整数の合計を最大化することを考えます。
+
+$(X_1, Y_1), \dots, (X_{N+M}, Y_{N+M})$ を $(1, A_1), \dots,(1, A_N ),(B_1, C_1), \dots,(B_M, C_M)$ とすると、問題は「整数 $Y_i$ を $X_i$ 個まで選ぶことができ、合計 $N$ 個の整数を選ぶときその和の最大値を求めてください」となります。これ は、$Y_i$ の大きい順に合計 $N$ 個となるように選ぶのが最適です。この方法では $O((N + M)\log(N + M))$ の
+時間計算量で求めることができます。
+
+</details><br>
+
+### Explanation
+
+---
+
+You can perform the rewrite operations in any order. This is because rewriting the same card more than once is wasteful. Moreover, the operation of rewriting $C_i$ up to $B_i$ times can be considered as performing the operation of rewriting $C_i$ up to one time for $B_i$ times. We can arrange each $C_i$ in a sequence $D_1, D_2, \dots, D_{\sum B_i}$ with $B_i$ copies. Then, we can think of the operation as "choosing an unused $i$ and rewriting $D_i$ up to one time". Since rewriting the same card more than once is wasteful, this operation is performed a total of $N$ times. Therefore, it is acceptable to consider a new sequence $D$ consisting of the largest $N$ elements of $D_i$.
+
+Let's assume we rewrite $X$ cards. It is optimal to choose the smallest $X$ cards as the source for rewriting. For the destination of the rewrite, it is optimal to select the largest $X$ cards from $D_i$. By adjusting $X$ step-by-step, the source and destination change by only one element each time, allowing us to solve this in $O(M \log M + N \log N)$ time.
+
+In the implementation, it might be challenging to extract the largest $N$ elements from $D$. A practical approach is to sort $(B_1, C_1), \dots, (B_M, C_M)$ in descending order by $C_i$$^{*1}$ and add $C_i$ to $D$ one by one up to $B_i$ times until $D$ has fewer than $N$ elements.
+
+You can also determine the optimal $X$. Sort $A$ and $D$ so that $A_1 \le A_2 \le \dots \le A_N$ and $D_1 \ge D_2 \ge \dots \ge D_{|D|}$. According to the aforementioned algorithm, shifting $X$ from $i - 1$ to $i$ changes the total value by $D_i - A_i$. Since $D_i - A_i$ is non-increasing, it is optimal to continue the operation as long as $D_i - A_i \ge 0$ or $D_i \ge A_i$. Thus, the optimal $X$ is the maximum $i$ for which this condition holds (or $0$ if no such $i$ exists).
+
+### Alternative Solution
+
+Consider selecting a total of $N$ integers, combining both the integers to be kept and those to be used as new values, to maximize their sum.
+
+Define $(X_1, Y_1), \dots, (X_{N+M}, Y_{N+M})$ as $(1, A_1), \dots, (1, A_N), (B_1, C_1), \dots, (B_M, C_M)$. The problem then becomes: "Select up to $X_i$ integers from each $Y_i$, and find the maximum sum of a total of $N$ integers". The optimal approach is to choose the $N$ largest $Y_i$. This method has a time complexity of $O((N + M) \log (N + M))$.
+
 <!-- ## D: Integer Cards
 
 書き換える操作は好きな順番で行っても構いません。なぜなら、同じカードに対して $2$ 回以上書き換える のは無駄だからです。また、$C_i$ に $B_i$ 枚まで書き換える操作は、$C_i$ に $1$ 個まで書き換える操作を $B_i$ 回行え ると考えます。各 $C_i$ を $B_i$ 個ずつ並べた列を $D_1, D_2, \cdots , D_{\sum B_i}$ とします。すると、操作は「選んだことの ない $i$ を選んで $1$ 枚まで $D_i$ に書き換える」と考えることができます。同じカードに対して $2$ 回以上書き換 えるのは無駄なので、この操作は合計で $N$ 回しか行いません。したがって、$D_i$ の大きい方から $N$ 個まで取 り出した列を新しい $D$ として考えても構いません。
