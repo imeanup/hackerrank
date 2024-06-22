@@ -77,14 +77,13 @@ $$|S_y - T_y| \le a + b \to (1)$$
 From $|S_y - T_y| \le a, |S_x - T_x| \le a + 2b$, we also need
 $$\frac{|S_y - T_y| + |S_x - T_x|}{2} \le a + b \to (2)$$
 
-Conversely, $(a, b) = \Big(|S_y - T_y|, \max\Big\{0, \frac{|S_x - T_x| - |S_y - T_y|}{2}\Big\}\Big)$ satisfies all conditions, and either (1) or (2) holds as an equality.
+Conversely, $(a, b) = \large{(}|S_y - T_y|, \max\large{\{}(0, \frac{|S_x - T_x| - |S_y - T_y|}{2}\large{\}}\large{)}$ satisfies all conditions, and either (1) or (2) holds as an equality.
 
 </details><br>
 
 Therefore, the minimum travel cost can be expressed as:
-$$
-\max \Big\{ |S_y - T_y|, \frac{|S_x - T_x| + |S_y - T_y|}{2} \Big\} = \frac{|S_y - T_y| + \max \{|S_x - T_x|, |S_y - T_y|\}}{2}
-$$
+
+$$\max \large{\{} |S_y - T_y|, \frac{|S_x - T_x| + |S_y - T_y|}{2} \large{\}} = \frac{|S_y - T_y| + \max \{|S_x - T_x|, |S_y - T_y|\}}{2}$$
 
 As mentioned in the collapsible section, you can derive this by organizing the conditions, but you can also derive this formula by experimenting with small cases, predicting regularities, and proving them. It might also help to come up with this formula by slightly transforming the plane, as shown in the diagram below.
 
