@@ -41,8 +41,6 @@ print(*ans[1:])
 
 </details><br>
 
-### Translation of the Explanation:
-
 We refer to $S_i$ and $T_i$ as the "scheduled departure and arrival times" and $S_i + X_i$ and $T_i + X_i$ as the "actual departure and arrival times."
 
 Since delaying a train's departure cannot cause another train to depart earlier, we can assume that all trains will depart at the earliest possible time.
