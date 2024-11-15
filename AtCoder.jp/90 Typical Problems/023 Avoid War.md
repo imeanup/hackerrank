@@ -241,12 +241,7 @@ For any two distinct cells $(i, j)$ and $(k, l)$ with Kings, it holds that $|i -
 
 The input is provided in the following format:
 
-$
-H \quad W \\
-C_{1,1} \ \dots \ C_{1,W} \\
-\vdots \\
-C_{H,1} \ \dots \ C_{H,W} \\
-$
+$H \quad W \\C_{1,1} \ \dots \ C_{1,W} \\\vdots \\C_{H,1} \ \dots \ C_{H,W} \\$
 
 ### Output
 
