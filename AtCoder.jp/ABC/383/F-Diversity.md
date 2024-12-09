@@ -66,10 +66,13 @@ This ensures $dp[c][p]$ contains the maximum satisfaction achievable by purchasi
 2. For $c = 1, 2, \dots, N$:
    - For each product $i_1, i_2, \dots, i_k$ of color $c$, update for $j = 1, 2, \dots, k$:
      - For $p = X, X-1, \dots, P_{ij}$, update:
+       
        $$
        dp[c][p] = \max\left(dp[c-1][p-P_{ij}] + U_{ij} + K, \, dp[c][p-P_{ij}] + U_{ij}, \, dp[c][p]\right)
        $$
+       
    - For $p = 0, 1, \dots, X$, update:
+
      $$
      dp[c][p] = \max(dp[c][p], dp[c-1][p])
      $$
