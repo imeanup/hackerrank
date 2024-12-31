@@ -109,6 +109,53 @@ To avoid this, when $K$ is large, instead of thinking about the $K$ selected ite
 
 The time complexity is $O(\binom{N}{K} \min(K, N-K))$. Given the constraint $\binom{N}{K} \le 10^6$, it follows that $\min(K, N-K) \le 11$, so this approach will work within the time limits.
 
+<details style="border: 1px solid black; padding: 10px;"><summary><b>CPP</b></summary><br>
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+using ll = int64_t;
+#define rep(i, x) for(int i = 0; i < int(x); i++)
+#define all(x) (x).begin(), (x).end()
+template<class T> inline bool chmax(T &a, T b){if (a < b) {a = b;return 1;}return 0;}
+template<class T> inline bool chmin(T &a, T b){if (a > b) {a = b;return 1;}return 0;}
+const ll MAXN = 1e18;
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int n, k;
+    cin >> n >> k;
+    vector<ll> a(n);
+    rep(i, n) cin >> a[i];
+
+    ll ans = 0;
+    
+    function<void(ll, int, int)>f = [&](ll curr, int idx, int c) -> void {
+        if (c == 0) {
+            chmax(ans, curr);
+            return;
+        }
+        if (idx == n) return;
+        f(curr^a[idx], idx+1, c-1);
+        f(curr, idx+1, c);
+    };
+
+    if (k <= n-k) 
+        f(0, 0, k);
+    else{
+        ll now = 0;
+        for (const auto &x : a){
+            now ^= x;
+        }
+        f(now, 0, n-k);
+    }
+    cout << ans << endl;
+    return 0;
+}
+```
+
+</details><br>
+
 <details style="border: 1px solid black; padding: 10px;"><summary><b>Python</b></summary><br>
 
 ```py
