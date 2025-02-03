@@ -16,9 +16,7 @@ $dp_i[k][j] (1\le i \le 3, 0\le j \le X, 0 \le k \le N)$ で、「$1$ 個目か�
 
 最後に、ビタミン $i (1\le i \le 3)$ の摂取のために食べる食べ物のカロリーの合計が $si$ 以下である時の 「ビタミン $1,2,3$ のうちもっとも摂取量が少ないものの摂取量」は $\min⁡(M_{1,s_1}, M_{2,s_2}, M_{3,s_3})$ で与えられるため、求めたい値は
 
-$$
-\max_{⁡s_1 + s_2 + s_3 = X} \min⁡(M_{1,s_1},M_{2,s_2}, M_{3,s_3})
-$$
+$$\max_{⁡s_1 + s_2 + s_3 = X} \min⁡(M_{1,s_1},M_{2,s_2}, M_{3,s_3})$$
 
 です。$\min⁡(M_{1,s_1}, M_{2,s_2}, M_{3,s_3})$ を最大化する組み合わせ $(s_1, s_2, s_3) = (S_1, S_2, S_3)$ は貪欲法によって、求めることができます。
 具体的には、$S_1 = S_2 = S_3 = 0$ から始めて次の操作をちょうど $X$ 回繰り返します。
@@ -176,15 +174,15 @@ signed main() {
 We can solve this problem by “splitting” the foods by vitamin type. Notice that since each food gives only one vitamin, if we want to achieve at least $t$ units for each vitamin then we must “pay” separately for vitamin 1, vitamin 2, and vitamin 3. In other words, if we can compute, for each vitamin type, the minimum number of calories required to “buy” at least $t$ units then the answer is feasible if the sum of the three calorie costs is at most $X$.
 
 A standard “0/1 knapSack” style dynamic programming (DP) works well here since the calorie constraint $X$ is small (up to 5000). For each vitamin type $v$ (i.e. $v\in\{1,2,3\}$) we can process only the foods that give vitamin $v$ and compute an array $dp_v[c]$ which is the maximum vitamin units achievable with exactly cost $c$. Then, we “relax” it to get 
-$$
-f_v[c] = \max_{0 \le i \le c} dp_v[i]
-$$
+
+$$f_v[c] = \max_{0 \le i \le c} dp_v[i]$$
+
 so that $f_v[c]$ is the maximum vitamin units achievable with cost at most $c$.
 
 Then for a given candidate value $t$ (which is a candidate for the “minimum vitamin intake”), we simply need to check for each vitamin $v$ what is the smallest calorie cost $c_v$ such that $f_v[c_v] \ge t$ (if one exists). If
-$$
-c_1 + c_2 + c_3 \le X,
-$$
+
+$$c_1 + c_2 + c_3 \le X,$$
+
 then it is possible to achieve at least $t$ units for each vitamin. We can binary search on $t$ (the answer is at most $\min(\text{total vitamin }1,\text{ total vitamin }2,\text{ total vitamin }3)$).
 
 Below is the complete C++ solution.
