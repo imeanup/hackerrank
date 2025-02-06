@@ -56,21 +56,15 @@ Below is a refined explanation that incorporates the suggested clarifications:
 ### Detailed Explanation
 
 We solve the problem using state dynamic programming by “simulating” the process of throwing the ball until all objects are knocked down. Since there are at most 16 objects, we can represent the state by a bitmask of length $N$, where a 1 in the bitmask means that the corresponding object is still standing. The initial state is represented by the bitmask
-$$
-(1 \ll N) - 1,
-$$
+$$(1 \ll N) - 1,$$
 which means all objects (indices $0,1,\dots,N-1$) are present.
 
 #### DP Definition
 
 Let
-$$
-dp[S] = \text{the expected number of additional throws required to knock down all objects, given that the set } S \text{ of objects is still up.}
-$$
+$$dp[S] = \text{the expected number of additional throws required to knock down all objects, given that the set } S \text{ of objects is still up.}$$
 The base case is when $S = \varnothing$ (i.e. all bits are 0), in which case
-$$
-dp[\varnothing] = 0.
-$$
+$$dp[\varnothing] = 0.$$
 
 #### Transition Dynamics
 
@@ -88,9 +82,7 @@ Since the same throw produces three outcomes (landing at $a-1$, $a$, and $a+1$),
 - $S_{a+1}$ for landing at $a+1$.
 
 A naïve recurrence would be:
-$$
-dp[S] = 1 + \frac{1}{3}\Bigl( dp[S_{a-1}] + dp[S_a] + dp[S_{a+1}] \Bigr).
-$$
+$$dp[S] = 1 + \frac{1}{3}\Bigl( dp[S_{a-1}] + dp[S_a] + dp[S_{a+1}] \Bigr).$$
 However, if one or more outcomes leave the state unchanged (i.e. $S_i = S$ for some $i$), we obtain a self–loop in the recurrence.
 
 #### Handling Self–Loops
@@ -101,31 +93,21 @@ Suppose that, for a chosen aim $a$ from state $S$, the three outcomes yield:
 - Outcome 3: new state $S_3$.
 
 Let
-$$
-p_{\text{same}} = \sum_{i:\; S_i=S} \frac{1}{3}
-$$
+$$p_{\text{same}} = \sum_{i:\; S_i=S} \frac{1}{3}$$
 be the total probability that the state does not change, and let
-$$
-q = \sum_{i:\; S_i \neq S} \frac{1}{3}\, dp[S_i]
-$$
+$$q = \sum_{i:\; S_i \neq S} \frac{1}{3}\, dp[S_i]$$
 be the contribution from outcomes that change the state.
 
 Then one throw yields:
-$$
-dp[S] = 1 + p_{\text{same}}\,dp[S] + q.
-$$
+$$dp[S] = 1 + p_{\text{same}}\,dp[S] + q.$$
 Solving for $dp[S]$ gives:
-$$
-dp[S] = \frac{1 + q}{1 - p_{\text{same}}}.
-$$
+$$dp[S] = \frac{1 + q}{1 - p_{\text{same}}}.$$
 *Note:* If $p_{\text{same}} = 1$ (i.e. all outcomes leave the state unchanged), then that aiming coordinate does not help; we simply skip that option.
 
 #### Choosing the Best Aiming Position
 
 Since our strategy is adaptive, we try every possible aiming coordinate $a$ from $-1$ to $16$ (we extend slightly outside the range $[0,15]$ to cover edge cases). For each aiming coordinate $a$ we compute the resulting state for each outcome, then calculate the candidate expected throws using the above formula. Finally, we choose the minimal expected value over all aiming choices:
-$$
-dp[S] = \min_{a \in \{-1,\dots,16\}} \frac{1 + q}{1 - p_{\text{same}}}.
-$$
+$$dp[S] = \min_{a \in \{-1,\dots,16\}} \frac{1 + q}{1 - p_{\text{same}}}.$$
 
 #### Precomputation of Object Positions
 
