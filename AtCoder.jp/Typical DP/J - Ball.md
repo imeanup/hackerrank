@@ -227,9 +227,7 @@ int main(){
    - When throwing a ball aimed at $a$, it lands at $a-1$, $a$, or $a+1$, each with probability $\frac{1}{3}$.
    - If an object is present (and still standing), remove it from the state.
    - If an outcome does not change the state, handle the self–loop by letting
-     $$
-     dp[S] = \frac{1 + q}{1 - p_{\text{same}}}.
-     $$
+     $$dp[S] = \frac{1 + q}{1 - p_{\text{same}}}.$$
 
 3. **Choosing the Best Strategy:**  
    - Try all aiming coordinates $a \in \{-1, \dots, 16\}$ and take the minimum expected throws.
