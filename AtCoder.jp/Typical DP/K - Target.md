@@ -22,9 +22,9 @@ The input is provided in the following format via standard input.
 
 <!-- 入力は以下の形式で標準入力から与えられる。 -->
 
-$N$ `<br>`
-$x_1r_1$ `<br>`
-$\dots$ `<br>`
+$N$ <br>
+$x_1r_1$ <br>
+$\dots$ <br>
 $x_Nr_N$
 
 ### Output Format
