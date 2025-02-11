@@ -107,3 +107,113 @@ which represents that we have reached (or exceeded) the needed exponents.
 
 3. **Output the result:**
    - Print the probability with appropriate precision (e.g. fixed with 9 decimal places).
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+using ll = long long;
+#define rep(i, x) for(int i = 0; i < int(x); i++)
+#define all(x) (x).begin(), (x).end()
+template<class T> inline bool chmax(T &a, T b){if (a < b) {a = b;return 1;}return 0;}
+template<class T> inline bool chmin(T &a, T b){if (a > b) {a = b;return 1;}return 0;}
+
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int n;
+    ll d;
+    cin >> n >> d;
+    int two = 0, three = 0, five = 0;
+    // Factorize d by primes 2, 3, and 5 i.e 2^two * 3^three * 5^five
+    while (d % 2LL == 0){
+        two++;
+        d /= 2LL;
+    }
+    while (d % 3LL == 0){
+        three++;
+        d /= 3LL;
+    }
+    while (d % 5LL == 0){
+        five++;
+        d /= 5LL;
+    }
+    // if d has no prime factors, no product of dice outcomes can be a multiple.
+    if(d != 1){
+        cout << fixed << setprecision(9) << 0.0 << endl;
+        return 0;
+    }
+    // Let r2, r3, and r5 be the required exponents
+    int r2 = two, r3 = three, r5 = five;
+    // Precalculate dice outcome 
+    vector<array<int, 3>> dice = {
+        {0, 0, 0}, // Outcome 1
+        {1, 0, 0}, // Outcome 2
+        {0, 1, 0}, // Outcome 3
+        {2, 0, 0}, // Outcome 4
+        {0, 0, 1}, // Outcome 5
+        {1, 1, 0} // Outcome 6
+    };
+
+    // dp[i][j][k] = probability of obtaining at least i 2's, j 3's and k 5's
+    vector dp(r2 + 1, vector (r3 + 1, vector<double>(r5 + 1, 0.0)));
+    // Initial case
+    dp[0][0][0] = 1.0;
+    // DP for n dice rolls.
+    for (int roll = 0; roll < n; roll++){
+        // new dp table after this roll.
+        vector ndp(r2 + 1, vector (r3 + 1, vector<double>(r5 + 1, 0.0)));
+        for (int i = 0; i <= r2; i++){
+            for (int j = 0; j <= r3; j++){
+                for (int k = 0; k <= r5; k++){
+                    if (dp[i][j][k] == 0.0) continue;
+                    double cur_prob = dp[i][j][k];
+                    for (int d = 0; d < 6; d++){
+                        // Each outomce we add its contributions to the number of factors.
+                        int add2 = dice[d][0];
+                        int add3 = dice[d][1];
+                        int add5 = dice[d][2];
+                        int ni = min(r2, i + add2);
+                        int nj = min(r3, j + add3);
+                        int nk = min(r5, k + add5);
+                        ndp[ni][nj][nk] += cur_prob/6.0;
+                    }
+                }
+            }
+        }
+        dp = ndp;
+    }
+    // Answer is the probability to have reached atleast (r2, r3, r5).
+    cout << fixed << setprecision(9) << dp[r2][r3][r5] << endl;
+
+    return 0;
+}
+```
+
+
+### Detailed Explanation
+
+1. **Factorizing $D$:**
+
+   We remove factors of $2$, $3$, and $5$ from $D$ while counting them. If after that $D$ is not 1, then $D$ contains some other prime factor and the answer is 0.
+
+2. **DP Array Initialization:**
+
+   We initialize a 3D array `dp` of size $(R2+1) \times (R3+1) \times (R5+1)$ with all values set to $0$, except `dp[0][0][0]` which is $1.0$ because initially no factors have been collected.
+
+3. **Dice Outcome Contributions:**
+
+   We precompute for each dice outcome the number of additional factors of 2, 3, and 5 it contributes. For example, rolling a 4 gives two extra factors of 2.
+
+4. **DP Transition:**
+
+   For each dice roll, we iterate over all states $(i,j,k)$ and for each outcome update the state. The new state is:
+   $$(\min(R2,\, i+\text{add2}),\, \min(R3,\, j+\text{add3}),\, \min(R5,\, k+\text{add5})).$$
+   We add $\frac{1}{6}$ of the current state's probability to the new state because each outcome occurs with probability $1/6$.
+
+5. **Result:**
+
+   After $N$ rolls, the probability that the product is a multiple of $D$ is stored in `dp[R2][R3][R5]`.
+
+6. **Output:**
+
+   The result is printed with 9 decimal places, ensuring that the absolute error is within $10^{-6}$.
