@@ -78,7 +78,7 @@ Let the left pile have $A$ items with values $a_1, a_2, \dots, a_A$ (from top to
 
 If $i > A$ then the left pile is empty, and similarly if $j > B$ then the right pile is empty.
 
-Define $ \text{dp}[i][j] $ as the maximum difference (current player’s score minus opponent’s score) that the current player can guarantee from the state $(i,j)$.
+Define $\text{dp}[i][j]$ as the maximum difference (current player’s score minus opponent’s score) that the current player can guarantee from the state $(i,j)$.
 
 ### How to Set Up the Recurrence
 
