@@ -36,12 +36,12 @@ It is also assumed that the outcomes of different matches are independent.
 
 The input is provided in the following format from standard input:
 
-$$
+$
 K \\
 R_1 \\
 \vdots \\
 R_{2^K}
-$$
+$
 
 ---
 
@@ -51,10 +51,10 @@ Output $2^K$ lines. The $i$-th line should contain the probability of participan
 
 ### Sample Input 1
 
-<section><pre>1
+```
 2200
 2600
-</pre></section>
+```
 
 ### Sample Output 1
 
