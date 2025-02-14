@@ -140,7 +140,7 @@ $$f(n)=f(n-1)+f(n-2)+\cdots+f(n-K)$$
 
 can be computed in $O(1)$ per step if we maintain the sum $f(n-1)+\cdots+f(n-K)$.)
 
-The following C++ code implements the solution. (See the comments for details.)
+The following C++ code implements the solution. 
 
 ```cpp
 #include<bits/stdc++.h>
