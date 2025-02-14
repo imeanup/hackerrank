@@ -87,13 +87,13 @@ $$f(n)=\text{(Number of binary strings of length $n$ with no $K$ consecutive $1$
 
 then
 
-- For $n<K$ we have no possibility of “$K$ in a row” so
+- For $n<K$ we have no possibility of **$K$ in a row** so
   $$f(n)=2^n.$$
   * Since the strings are too short to have $k$ consecutive ones.
 - For $n\ge K,$ the recurrence
   $$f(n)= f(n-1)+f(n-2)+\cdots+f(n-K)$$
 
-  holds (this is “well–known” for these “$K$–bonacci”–type recurrences).
+  holds (this is “well–known” for these **$K$–bonacci**–type recurrences).
 
 But notice: our strings have the extra condition that the first and last digits are $1$. (They are “forced”.) How can we count those? (One nice idea is to “remove” the conditions by inclusion–exclusion.) In fact, one may show that the number of valid strings (of length $N$ with no $K$ consecutive $1$’s) that also satisfy $$a_1 = a_N = 1$$ is $$\text{Answer} = f(N) - 2f(N-1) + f(N-2).$$
 
@@ -107,7 +107,7 @@ A quick check with the samples shows that this is exactly what we need. (Remembe
 
 - **Sample 1:** $N=10,\; K=2$.
 
-  With $K=2$ “$2$ consecutive stops are forbidden” (i.e. no two stops in a row are allowed). (Since station $1$ and station $N$ are forced stops, the rule forces station $2$ and station $N-1$ to be “don’t‐stop”. In fact one may show that in this case the number of possibilities is exactly the number of independent sets on a path of length $6$ – which is $21$.)
+  With $K=2$ “ $2$ consecutive stops are forbidden” (i.e. no two stops in a row are allowed). (Since station $1$ and station $N$ are forced stops, the rule forces station $2$ and station $N-1$ to be “don’t‐stop”. In fact one may show that in this case the number of possibilities is exactly the number of independent sets on a path of length $6$ – which is $21$.)
 
   Let’s compute using our recurrence. For $K=2,$ note that for $n<2$ we have
 
@@ -190,4 +190,4 @@ signed main() {
 
    $$f(N) - 2 f(N-1) + f(N-2).$$
 
-   (You can check that this formula works for small values.) We then output the answer modulo $10^9+7$.
+   We then output the answer modulo $10^9+7$.
