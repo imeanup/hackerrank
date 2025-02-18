@@ -150,9 +150,9 @@ The trick is to notice that many weights are “never reached” in the DP and t
    Initially, you have the state $(0,0)$.
 
 3. **Transition:**  
-   For each block (with $(w,s,v)$), try to put it under every state $(W,V)$ in `dp` **if** $W\le s$. This yields a candidate new state:
+   For each block (with $(w,s,v)$ ), try to put it under every state $(W,V)$ in `dp` **if** $W\le s$. This yields a candidate new state:
     $$(W+w,\; V+v).$$
-   Then merge all these new candidate states with the old states, and filter out any state that is “dominated” by another state (i.e. if for two states $ (W_1,V_1)$ and $(W_2,V_2)$ with $W_1 \le W_2$ but $V_1 \ge V_2$, then $(W_2,V_2)$ is useless).
+   Then merge all these new candidate states with the old states, and filter out any state that is “dominated” by another state (i.e. if for two states $(W_1,V_1)$ and $(W_2,V_2)$ with $W_1 \le W_2$ but $V_1 \ge V_2$, then $(W_2,V_2)$ is useless).
 
 4. **Answer:**  
    The final answer is the maximum $V$ over all states in `dp`.
@@ -280,7 +280,7 @@ This sparse DP approach avoids iterating over all $10^7$ possible weights for ea
 2. **Using Sparse Dynamic Programming:**
 
    - **Traditional DP Problem:**  
-     A straightforward DP might use a table where `dp[t]` is the maximum value for a tower weighing exactly $t $. However, the total weight can go up to around $10^7$ (since $w_i \le 10^4 $ and $N \le 10^3 $), leading to a huge state space.
+     A straightforward DP might use a table where `dp[t]` is the maximum value for a tower weighing exactly $t$. However, the total weight can go up to around $10^7$ (since $w_i \le 10^4$ and $N \le 10^3$ ), leading to a huge state space.
      
    - **Sparse DP Technique:**  
      Instead of a large DP array, we maintain a **list of "states"**—each state is a pair $(W, V)$ where:
@@ -293,7 +293,7 @@ This sparse DP approach avoids iterating over all $10^7$ possible weights for ea
 
    - For each block $i$ (after sorting), try to add it **below** every tower state $(W, V)$ in your DP list.
    - **Validity Check:**  
-     You can add block $i$ to a state $(W, V)$ only if the current tower weight $W$ is at most the block's solidness $s_i$ (i.e., $W \le s_i$).
+     You can add block $i$ to a state $(W, V)$ only if the current tower weight $W$ is at most the block's solidness $s_i$ (i.e., $W \le s_i$ ).
    - **Updating the State:**  
      If the block can support the current tower, then adding it creates a new state:
      $$(W + w_i,\, V + v_i)$$
@@ -311,10 +311,10 @@ This sparse DP approach avoids iterating over all $10^7$ possible weights for ea
 - **Representation:**  
   The DP is a vector of pairs:  
   $$\text{dp} = \{ (W, V) \}$$
-  where each pair signifies that there exists a way to build a tower with total weight $W $ and total value $V $.
+  where each pair signifies that there exists a way to build a tower with total weight $W$ and total value $V$.
 
 - **Pareto-Optimality:**  
-  The DP list is maintained so that if there exists a state $(W_1, V_1)$ and another state $(W_2, V_2)$ with $W_1 \le W_2 $ and $V_1 \ge V_2 $, then the state $(W_2, V_2)$ is redundant and can be removed.
+  The DP list is maintained so that if there exists a state $(W_1, V_1)$ and another state $(W_2, V_2)$ with $W_1 \le W_2$ and $V_1 \ge V_2$, then the state $(W_2, V_2)$ is redundant and can be removed.
 
 - **Transition Mechanism:**  
   For each block:
