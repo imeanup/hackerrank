@@ -44,7 +44,7 @@ $$
 
 ---
 
-It may seem sudden, but the constraint $\displaystyle \sum_{j = l}^r A_j = S_i$ is a bit awkward to work with, so let us define $\displaystyle B(k) = \sum_{i = 1}^k A_i$.
+It may seem sudden, but the constraint $\displaystyle\sum_{j = l}^r A_j = S_i$ is a bit awkward to work with, so let us define $\displaystyle B(k) = \sum_{i = 1}^k A_i$.
 
 Then $\displaystyle\sum_{j = l}^r A_j = S_i$ is equivalent to $B_r - B_{l-1} = S_i.$
 
@@ -59,14 +59,14 @@ Originally the sequence $\{A_j\}$ is subject to the constraints
 
 In terms of $B$, these become
 
-> * $B_{R_i} - B_{L_i-1} = S_i$ \quad $(1 \le i \le M)$
-> * $B_j - B_{j-1} \ge 1$ \quad $(1 \le j \le N)$.
+> * $B_{R_i} - B_{L_i-1} = S_i \quad (1 \le i \le M)$
+> * $B_j - B_{j-1} \ge 1 \quad (1 \le j \le N)$.
 
 We can split each equality into a pair of inequalities:
 
-> * $B_{R_i} - B_{L_i-1} \ge S_i$ \quad $(1 \le i \le M)$
-> * $B_{R_i} - B_{L_i-1} \le S_i$ \quad $(1 \le i \le M)$
-> * $B_j - B_{j-1} \ge 1$ \quad $(1 \le j \le N)$.
+> * $B_{R_i} - B_{L_i-1} \ge S_i \quad (1 \le i \le M)$
+> * $B_{R_i} - B_{L_i-1} \le S_i \quad (1 \le i \le M)$
+> * $B_j - B_{j-1} \ge 1 \quad (1 \le j \le N)$.
 
 ---
 
