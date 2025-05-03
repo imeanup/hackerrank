@@ -44,7 +44,7 @@ $$
 
 ---
 
-It may seem sudden, but the constraint $\displaystyle\sum_{j = l}^r A_j = S_i$ is a bit awkward to work with, so let us define $\displaystyleB(k) = \sum_{i = 1}^k A_i$.
+It may seem sudden, but the constraint $\displaystyle \sum_{j = l}^r A_j = S_i$ is a bit awkward to work with, so let us define $\displaystyle B(k) = \sum_{i = 1}^k A_i$.
 
 Then $\displaystyle\sum_{j = l}^r A_j = S_i$ is equivalent to $B_r - B_{l-1} = S_i.$
 
